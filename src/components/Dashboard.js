@@ -13,13 +13,20 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Welcome To the Dashboard</p>
-        <button onClick={this.logout}>Logout</button>
-        <div>
-          <ProjectsContainer/>
-          <ProjectForm/>
+      <div className="dash-wrapper">
+        <div className="dash-left">Left Nav</div>
+        <div className="dash-right">
+          <div className="header dash-header">Header <button onClick={this.logout}>Logout</button></div>
+          <div className="dash-main">
+            <p>Welcome To the Dashboard</p>
+            <div>
+              <ProjectsContainer/>
+              <ProjectForm/>
+            </div>
+          </div>
+          <div className="dash-users">Users</div>
         </div>
+
       </div>
     )
   }
