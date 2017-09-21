@@ -12,19 +12,15 @@ class LoginForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-
-    const userParams = {
-      email: this.state.email,
-      password: this.state.password
-    }
-    Auth.login(userParams)
+    Auth.login(this.state)
       .then((user) => {
         this.setState({
           email: "",
           password: ""
         })
         localStorage.setItem("token", user.jwt)
-        this.props.history.replace("/home")
+        localStorage.setItem('id', user.user.id)
+        this.props.history.replace("/dashboard")
       })
 
   }

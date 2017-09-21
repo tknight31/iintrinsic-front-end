@@ -43,7 +43,6 @@ class SignupForm extends React.Component {
 
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <h1>Sign Up</h1><Link to={`/login`}>Login</Link>
