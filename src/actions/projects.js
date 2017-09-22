@@ -7,12 +7,15 @@ export function addProject(project) {
     short_desc: project["short_desc"]
   })
 
+  const jwtToken = localStorage.getItem("token")
+
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
     fetch('http://localhost:3000/api/v1/projects',{
           method: 'POST',
           body: projectJSON,
           headers: {
+            "Authorization":`Bearer ${jwtToken}`,
             "Content-Type":"application/json",
             "Accept":"application/json"
           }
@@ -27,6 +30,8 @@ export function addProject(project) {
 
 
 export function removeProject(title) {
+  const jwtToken = localStorage.getItem("token")
+
   return {
     type:"REMOVE_PROJECT",
     payload: title
@@ -35,9 +40,17 @@ export function removeProject(title) {
 
 
 export function fetchProjects() {
+  const jwtToken = localStorage.getItem("token")
+
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch('http://localhost:3000/api/v1/projects')
+    fetch('http://localhost:3000/api/v1/projects',{
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
       .then((res) => res.json())
       .then(projects => {
         dispatch({type:"FETCHED_PROJECTS", payload: projects})

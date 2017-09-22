@@ -14,10 +14,9 @@ import authorize from './components/hocs/authorize'
 
 class App extends Component {
   render() {
-    const AuthDashboard = authorize(Dashboard)
     return (
       <div className="App">
-        <Route path="/dashboard" component={AuthDashboard}/>
+        <Route path="/dashboard" component={authorize(Dashboard)}/>
         <Route path="/login" render={(props) => <LoginForm login={this.loginUser} {...props}/>}/>
         <Route path="/signup" render={(props) => <SignupForm login={this.loginUser} {...props}/>}/>
       </div>

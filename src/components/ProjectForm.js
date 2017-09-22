@@ -30,7 +30,7 @@ class ProjectsForm extends React.Component {
     })
   }
   render() {
-    console.log(this.state)
+  
     return (
       <form onSubmit={this.handleSubmit}>
         <div><label>Project Name</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>

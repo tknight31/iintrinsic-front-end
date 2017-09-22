@@ -1,8 +1,11 @@
 import React from 'react'
-import authorize from './hocs/authorize'
 import Auth from '../adapters/auth'
+import DashboardHeader from './DashboardHeader'
+import DashboardLeft from './DashboardLeft'
+import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './ProjectsContainer'
 import ProjectForm from './ProjectForm'
+
 
 class Dashboard extends React.Component {
 
@@ -14,9 +17,9 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="dash-wrapper">
-        <div className="dash-left">Left Nav</div>
+        <DashboardLeft/>
         <div className="dash-right">
-          <div className="header dash-header">Header <button onClick={this.logout}>Logout</button></div>
+          <DashboardHeader logout={this.logout}/>
           <div className="dash-main">
             <p>Welcome To the Dashboard</p>
             <div>
@@ -24,7 +27,7 @@ class Dashboard extends React.Component {
               <ProjectForm/>
             </div>
           </div>
-          <div className="dash-users">Users</div>
+          <DashboardUsers/>
         </div>
 
       </div>

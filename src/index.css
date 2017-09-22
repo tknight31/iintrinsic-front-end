@@ -22,6 +22,7 @@ flex-flow: row wrap;
 .dash-header {
   background: white;
   flex: 1 100%;
+  color: #cfd7dc;
 }
 
 .dash-main {
@@ -34,6 +35,7 @@ flex-flow: row wrap;
   flex: 0 0;
   min-width: 270px;
   padding:12px;
+  color:#888888
 }
 
 .dash-right {
@@ -45,6 +47,7 @@ flex-flow: row wrap;
   display: flex;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  color:#888888
 }
 
 .dash-right > * {

@@ -1,11 +1,13 @@
+function usersReducer(state = {list:[], isLoading:false}, action){
 
-function usersReducer(state = {}, action) {
   switch (action.type) {
-    case "ADD_FRIEND":
-      return state
-    default:
-      return state
-  }
+      case "FETCHING_USERS":
+        return Object.assign({}, state, {isLoading: true})
+      case "FETCHED_USERS":
+        return Object.assign({}, state, {list: action.payload, isLoading: false})
+      default:
+        return state
+    }
 
 }
 
