@@ -5,9 +5,17 @@ import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './ProjectsContainer'
 import ProjectForm from './ProjectForm'
+import { connect } from 'react-redux'
+import * as UserActions from '../actions/users'
+import { bindActionCreators } from 'redux'
 
 
 class Dashboard extends React.Component {
+
+  componentDidMount() {
+    this.props.setCurrentUser()
+  }
+
 
   logout = () => {
     Auth.logOut()
@@ -17,7 +25,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="dash-wrapper">
-        <DashboardLeft/>
+        <DashboardLeft currentUser={this.props.currentUser}/>
         <div className="dash-right">
           <DashboardHeader logout={this.logout}/>
           <div className="dash-main">
@@ -35,4 +43,15 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+function mapStateToProps(state) {
+  return {
+     currentUser: state.users.currentUser
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+
+  return bindActionCreators(UserActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

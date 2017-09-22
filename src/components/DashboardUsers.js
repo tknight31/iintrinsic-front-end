@@ -10,7 +10,6 @@ class DashboardUsers extends React.Component  {
   }
 
   render() {
-    console.log(this.props.users)
 
     const allUsers = this.props.users.map((user, index) => <UserItem key={index} firstName={user["first_name"]} lastName={user["last_name"]} />)
     return (
@@ -24,7 +23,6 @@ class DashboardUsers extends React.Component  {
 
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
      users: state.users.list
   }

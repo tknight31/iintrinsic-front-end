@@ -10,7 +10,6 @@ class ProjectsContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props)
 
     return (
       <div>
@@ -22,7 +21,6 @@ class ProjectsContainer extends React.Component {
 
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
      projects: state.projects.list
   }

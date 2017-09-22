@@ -28,6 +28,7 @@ flex-flow: row wrap;
 .dash-main {
   text-align: left;
   flex: 1 0;
+  min-height: 900px;
 }
 
 .dash-left {
@@ -36,6 +37,15 @@ flex-flow: row wrap;
   min-width: 270px;
   padding:12px;
   color:#888888
+}
+
+.profile-image{
+  height:80px;
+  width:80px;
+  margin:12px auto;
+  border-radius: 500rem;
+  background-image: url("images/default-user.jpg");
+  background-size: contain;
 }
 
 .dash-right {
@@ -71,8 +81,14 @@ flex-flow: row wrap;
   text-align: left;
 }
 
+.left-nav li {
+  margin: 5px auto;
+}
+
 .left-nav a {
-  display: block;
   color: white;
   text-decoration: none;
+}
+.left-nav a:hover {
+  color: #ffc400;
 }

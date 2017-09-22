@@ -9,22 +9,27 @@ const DashboardLeft = (props) => {
             INTRINSIC
         </div>
         <div className="avatar">
-            
-            <h3>Current User</h3>
+            <div className="profile-image"></div>
+            <h3>{props.currentUser["first_name"]} {props.currentUser["last_name"]}</h3>
         </div>
         <div className="left-nav">
             <p>Navigate</p>
-            <Link to={`/dashboard/home`}>Dashboard</Link>
-            <Link to={`/dashboard/projects`}>My Projects</Link>
-            <Link to={`/dashboard/profile`}>My Profile</Link>
-            <Link to={`/dashboard/messages`}>Messages</Link>
+            <ul>
+              <li><Link to={`/dashboard/home`}>Dashboard</Link></li>
+              <li><Link to={`/dashboard/projects`}>My Projects</Link></li>
+              <li><Link to={`/dashboard/profile`}>My Profile</Link></li>
+              <li><Link to={`/dashboard/messages`}>Messages</Link></li>
+            </ul>
+
         </div>
         <div className="left-nav">
             <p>Navigate</p>
-            <Link to={`/dashboard/new`}>Create New</Link>
-            <Link to={`/dashboard/task`}>Add Task</Link>
-            <Link to={`/dashboard/profile`}>My Profile</Link>
-            <Link to={`/dashboard/messages`}>Messages</Link>
+            <ul>
+              <li><Link to={`/dashboard/new`}>Create New</Link></li>
+              <li><Link to={`/dashboard/task`}>Add Task</Link></li>
+              <li><Link to={`/dashboard/profile`}>My Profile</Link></li>
+              <li><Link to={`/dashboard/messages`}>Messages</Link></li>
+            </ul>
         </div>
     </div>
   )
