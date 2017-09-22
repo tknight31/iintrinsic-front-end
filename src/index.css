@@ -59,3 +59,20 @@ flex-flow: row wrap;
   border-top:solid #eaeaea 1px;
   min-width: 270px;
 }
+
+.logo, .avatar {
+  border-bottom: black solid 1px;
+  padding-bottom: 12px;
+}
+
+.left-nav {
+  border-bottom: black solid 1px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+.left-nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
