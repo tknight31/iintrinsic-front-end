@@ -4,11 +4,11 @@ import ProjectItem from './ProjectItem'
 const ProjectsList = (props) => {
 
 
-  const ProjectItems = props.projects.map((project) => <ProjectItem key={project.id} project={project.name}/>)
+  const ProjectItems = props.projects.map((project) => <ProjectItem key={project.id} project={project}/>)
   return (
-    <ul>
+    <div className="project-container">
       {ProjectItems}
-    </ul>
+    </div>
   )
 }
 

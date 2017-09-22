@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import Auth from '../adapters/auth'
 import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
@@ -23,16 +24,17 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    console.log(this.props.currentUser)
     return (
       <div className="dash-wrapper">
         <DashboardLeft currentUser={this.props.currentUser}/>
         <div className="dash-right">
           <DashboardHeader logout={this.logout}/>
           <div className="dash-main">
-            <p>Welcome To the Dashboard</p>
+
             <div>
-              <ProjectsContainer/>
-              <ProjectForm/>
+              <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
+              <Route path="/dashboard/projects/new" component={ProjectForm}/>
             </div>
           </div>
           <DashboardUsers/>

@@ -69,6 +69,9 @@ flex-flow: row wrap;
   border-top:solid #eaeaea 1px;
   min-width: 270px;
 }
+.dash-main-head {
+  border-bottom: #ababab solid 1px;
+}
 
 .logo, .avatar {
   border-bottom: black solid 1px;

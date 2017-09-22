@@ -28,7 +28,7 @@ class SignupForm extends React.Component {
         })
         localStorage.setItem("token", user.jwt)
         localStorage.setItem('id', user.user.id)
-        this.props.history.replace("/dashboard")
+        this.props.history.replace("/dashboard/home")
       })
 
   }

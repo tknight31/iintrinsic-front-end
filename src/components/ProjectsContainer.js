@@ -10,9 +10,12 @@ class ProjectsContainer extends React.Component {
   }
 
   render() {
-
+      console.log(this.props.projects);
     return (
       <div>
+        <div className="dash-main-head">
+          <h2>Welcome {this.props.currentUser["first_name"]}</h2>
+        </div>
         <ProjectList projects={this.props.projects}/>
       </div>
     )
