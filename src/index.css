@@ -96,6 +96,17 @@ flex-flow: row wrap;
   border-top:solid #d8d8d8 1px;
   min-width: 270px;
 }
+
+.dash-users a {
+  color:gray;
+  text-decoration: none;
+}
+
+.dash-users a:hover {
+  color:#a7a7a7;
+  text-decoration: none;
+}
+
 .dash-main-head {
   border-bottom: #ababab solid 1px;
 }
