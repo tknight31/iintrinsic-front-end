@@ -5,6 +5,25 @@ body {
   background: #d6dbe1
 }
 
+h1, h2, h3, h4 {
+  margin:.6em auto;
+}
+
+.button {
+  border-radius: 15rem;
+  border: none;
+  background: #ffc400;
+  color:white;
+  font-size: 1em;
+  padding:8px 12px;
+}
+
+.button:hover {
+  background: #d2a307;
+  cursor: pointer;
+}
+
+
 /*#ffc400*/
 
 .dash-wrapper {
@@ -20,7 +39,7 @@ flex-flow: row wrap;
 }
 
 .dash-header {
-  background: white;
+  background: #eeeeee;
   flex: 1 100%;
   color: #cfd7dc;
 }
@@ -45,7 +64,9 @@ flex-flow: row wrap;
   margin:12px auto;
   border-radius: 500rem;
   background-image: url("images/default-user.jpg");
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .dash-right {
@@ -65,8 +86,8 @@ flex-flow: row wrap;
 }
 
 .dash-users {
-  background:white;
-  border-top:solid #eaeaea 1px;
+  background:#eeeeee;
+  border-top:solid #d8d8d8 1px;
   min-width: 270px;
 }
 .dash-main-head {
@@ -76,6 +97,10 @@ flex-flow: row wrap;
 .logo, .avatar {
   border-bottom: black solid 1px;
   padding-bottom: 12px;
+}
+
+.avatar {
+  text-align: center;
 }
 
 .left-nav {
@@ -94,4 +119,84 @@ flex-flow: row wrap;
 }
 .left-nav a:hover {
   color: #ffc400;
+}
+
+.project-container {
+  margin-top: 30px;
+}
+
+.project-item, .user-item {
+  display: flex;
+  align-items: center;
+}
+
+.project-item {
+  background: #e5e5e8;
+  box-sizing: border-box;
+  padding:4px;
+}
+
+.project-members {
+  text-align: center;
+}
+
+.project-item > * {
+  padding: 10px;
+}
+
+.project-item:nth-child(odd) {
+  background: #FFF;
+}
+
+.user-item {
+  margin-bottom: .9em;
+}
+
+.user-info {
+  padding-left: 1em;
+  box-sizing: border-box;
+}
+
+.user-info h4 {
+  margin:.2em auto;
+}
+
+.user-info h3 {
+  margin:.3em auto;
+}
+
+.small-avatar {
+  height:40px;
+  width:40px;
+  border: solid gray 3px;
+  border-radius: 500rem;
+  background-image: url("images/default-user.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.user-profile-container {
+
+  padding:12px;
+
+}
+.user-profile-info {
+  display: flex;
+  background-color: white;
+  margin-bottom: 12px;
+}
+
+.user-profile-info .profile-image{
+  height:150px;
+  width:175px;
+  margin:12px;
+  border: solid gray 5px;
+}
+
+.profile-mid {
+  padding:0 12px;
+  border-right:solid gray 1px;
+}
+.profile-right {
+  padding:0 12px;
 }

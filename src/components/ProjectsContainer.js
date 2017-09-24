@@ -9,14 +9,18 @@ class ProjectsContainer extends React.Component {
     this.props.fetchProjects()
   }
 
+  filteredProjects() {
+    return this.props.projects.filter(project => project.creator.id !== parseInt(localStorage.getItem("id")))
+  }
+
   render() {
-      console.log(this.props.projects);
+    console.log(this.filteredProjects());
     return (
       <div>
         <div className="dash-main-head">
           <h2>Welcome {this.props.currentUser["first_name"]}</h2>
         </div>
-        <ProjectList projects={this.props.projects}/>
+        <ProjectList projects={this.filteredProjects()}/>
       </div>
     )
   }

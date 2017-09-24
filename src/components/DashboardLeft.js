@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const DashboardLeft = (props) => {
 
-    const imgStyle = props.currentUser["user_image"] ? {backgroundImage: 'url(./images/' + props.currentUser["user_image"] + ')'} : null
+    const imgStyle = props.currentUser["user_image"] ? {backgroundImage: 'url(../../images/' + props.currentUser["user_image"] + ')'} : null
 
   return (
     <div className="dash-left">
@@ -13,6 +13,7 @@ const DashboardLeft = (props) => {
         <div className="avatar">
             <div className="profile-image" style={imgStyle}></div>
             <h3>{props.currentUser["first_name"]} {props.currentUser["last_name"]}</h3>
+            <h4>{props.currentUser.role}</h4>
         </div>
         <div className="left-nav">
             <p>Navigate</p>

@@ -9,9 +9,13 @@ class DashboardUsers extends React.Component  {
      this.props.fetchUsers()
   }
 
+  filteredUsers() {
+    return this.props.users.filter(user => user.id !== parseInt(localStorage.getItem("id")))
+  }
+
   render() {
 
-    const allUsers = this.props.users.map((user, index) => <UserItem key={index} firstName={user["first_name"]} lastName={user["last_name"]} />)
+    const allUsers = this.filteredUsers().map((user, index) => <UserItem key={index} user={user}/>)
     return (
       <div className="dash-users">
         {allUsers}
