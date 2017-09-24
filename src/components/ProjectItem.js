@@ -46,5 +46,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(ProjectItem)
-
-// AIzaSyAJkAGk6ZQrwqduLPv9tNcM8aFqWMHRIdU

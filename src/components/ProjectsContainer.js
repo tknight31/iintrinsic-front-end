@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectList from './ProjectList'
+import MapContainer from './MapContainer'
 import { connect } from 'react-redux'
 import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
@@ -20,6 +21,7 @@ class ProjectsContainer extends React.Component {
         <div className="dash-main-head">
           <h2>Welcome {this.props.currentUser["first_name"]}</h2>
         </div>
+        <div className="map-holder"><MapContainer/></div>
         <ProjectList projects={this.filteredProjects()}/>
       </div>
     )
