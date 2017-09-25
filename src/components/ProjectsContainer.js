@@ -15,7 +15,7 @@ class ProjectsContainer extends React.Component {
   }
 
   render() {
-    console.log(this.filteredProjects());
+    console.log(this.props.users);
     return (
       <div>
         <div className="dash-main-head">

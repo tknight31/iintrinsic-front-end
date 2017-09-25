@@ -1,5 +1,8 @@
 import React from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { connect } from 'react-redux'
+import * as UserActions from '../actions/users'
+import { bindActionCreators } from 'redux'
 
 export class MapContainer extends React.Component {
 
@@ -21,9 +24,10 @@ export class MapContainer extends React.Component {
       timeout: 5000,
       maximumAge: 0
     }
-
     navigator.geolocation.getCurrentPosition(this.success, this.error, options)
   }
+
+
 
   success = (pos) => {
   var crd = pos.coords;
@@ -42,6 +46,12 @@ export class MapContainer extends React.Component {
   error = (err) => {
   console.warn(`ERROR(${err.code}): ${err.message}`);
   };
+
+
+  currentUsersWithPositions = () => {
+    return this.props.users.filter(user => !user["ghost_mode"] && user.latitude)
+  }
+
 
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -67,11 +77,17 @@ render() {
     height: '100%'
     }
 
+    console.log(this.currentUsersWithPositions());
+
+    const userMarkers = this.currentUsersWithPositions().map((user, index) => <Marker key={index} onClick={this.onMarkerClick} title={`${user['first_name']} ${user['last_name']}`} position={{lat: user['latitude'], lng: user['longitude']}} />)
+
+
     if (this.state.latitude && this.state.longitude) {
       return (
         <Map
           google={this.props.google}
           zoom={14}
+          onClick={this.onMapClicked}
           style={style}
           initialCenter={{
               lat: this.state.latitude,
@@ -79,12 +95,15 @@ render() {
             }}
           >
 
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} />
+          <Marker onClick={this.onMarkerClick} name={'Current location'} />
+          {userMarkers}
 
-          <InfoWindow onClose={this.onInfoWindowClose} visible={this.state.showingInfoWindow}>
+          <InfoWindow
+            marker={this.state.activeMarker}
+            onClose={this.onMapClicked}
+            visible={this.state.showingInfoWindow}>
               <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              <h1>USer</h1>
               </div>
           </InfoWindow>
         </Map>
@@ -95,11 +114,20 @@ render() {
       )
     }
 
-
-
   }
 }
 
-export default GoogleApiWrapper({
+function mapStateToProps(state) {
+  return {
+     users: state.users.list
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(UserActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
   apiKey: ("AIzaSyAJkAGk6ZQrwqduLPv9tNcM8aFqWMHRIdU")
-})(MapContainer)
+})(MapContainer))
