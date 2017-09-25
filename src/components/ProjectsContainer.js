@@ -11,11 +11,11 @@ class ProjectsContainer extends React.Component {
   }
 
   filteredProjects() {
-    return this.props.projects.filter(project => project.creator.id !== parseInt(localStorage.getItem("id")))
+    return this.props.projects.filter(project => project.creator.id !== parseInt(localStorage.getItem("id")) && !project.creator["ghost_mode"] && project.creator.latitude)
   }
 
   render() {
-    console.log(this.props.users);
+    console.log(this.filteredProjects());
     return (
       <div>
         <div className="dash-main-head">

@@ -56,3 +56,29 @@ export function setCurrentUser() {
       })
   }
 }
+
+export function setCurrentUserLocation(lat, long) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const latLongJSON = JSON.stringify({
+    latitude: lat,
+    longitude: long,
+  })
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_USER"})
+    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+      method: 'POST',
+      body: latLongJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then(user => {
+        dispatch({type:"FETCHED_CURRENT_USER", payload: user})
+      })
+  }
+}

@@ -29,6 +29,7 @@ const DashboardLeft = (props) => {
             <p>Navigate</p>
             <ul>
               <li><Link to={`/dashboard/projects/new`}>Create New</Link></li>
+              <li><Link to={`/dashboard/requests`}>Project Requests</Link></li>
               <li><Link to={`/dashboard/task`}>Add Task</Link></li>
               <li><Link to={`/dashboard/profile`}>My Profile</Link></li>
               <li><Link to={`/dashboard/messages`}>Messages</Link></li>

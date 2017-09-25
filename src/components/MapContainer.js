@@ -3,6 +3,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 
 export class MapContainer extends React.Component {
 
@@ -37,10 +38,8 @@ export class MapContainer extends React.Component {
       longitude: crd.longitude
     })
 
-    console.log('Your current position is:')
-    console.log(`Latitude : ${crd.latitude}`)
-    console.log(`Longitude: ${crd.longitude}`)
-    console.log(`More or less ${crd.accuracy} meters.`)
+    this.props.setCurrentUserLocation(crd.latitude, crd.longitude)
+
   }
 
   error = (err) => {
@@ -49,7 +48,7 @@ export class MapContainer extends React.Component {
 
 
   currentUsersWithPositions = () => {
-    return this.props.users.filter(user => !user["ghost_mode"] && user.latitude)
+    return this.props.users.filter(user => !user["ghost_mode"] && user.latitude && user.id !== parseInt(localStorage.getItem("id")))
   }
 
 
@@ -77,9 +76,7 @@ render() {
     height: '100%'
     }
 
-    console.log(this.currentUsersWithPositions());
-
-    const userMarkers = this.currentUsersWithPositions().map((user, index) => <Marker key={index} onClick={this.onMarkerClick} title={`${user['first_name']} ${user['last_name']}`} position={{lat: user['latitude'], lng: user['longitude']}} />)
+    const userMarkers = this.currentUsersWithPositions().map((user, index) => <Marker key={index} onClick={this.onMarkerClick} userId={user.id} firstName={user['first_name']} lastName={user['last_name']} email={user['email']} role={user['role']} title={`${user.first_name} ${user.last_name}`} position={{lat: user['latitude'], lng: user['longitude']}} />)
 
 
     if (this.state.latitude && this.state.longitude) {
@@ -103,7 +100,9 @@ render() {
             onClose={this.onMapClicked}
             visible={this.state.showingInfoWindow}>
               <div>
-              <h1>USer</h1>
+              {this.state.selectedPlace.firstName && this.state.selectedPlace.lastName ? <h2>{this.state.selectedPlace.firstName} {this.state.selectedPlace.lastName}</h2> :  <h2>Me</h2>}
+              <h4>{this.state.selectedPlace.role}</h4>
+              <p><a href="#">{this.state.selectedPlace.email}</a></p>
               </div>
           </InfoWindow>
         </Map>
@@ -119,10 +118,10 @@ render() {
 
 function mapStateToProps(state) {
   return {
-     users: state.users.list
+     users: state.users.list,
+     currentUser: state.users.currentUser
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(UserActions, dispatch)

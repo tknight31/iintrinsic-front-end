@@ -5,6 +5,7 @@ import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './ProjectsContainer'
+import RequestContainer from './RequestContainer'
 import ProjectForm from './ProjectForm'
 import UserProfile from './UserProfile'
 import { connect } from 'react-redux'
@@ -18,32 +19,38 @@ class Dashboard extends React.Component {
     this.props.setCurrentUser()
   }
 
-
   logout = () => {
     Auth.logOut()
     this.props.history.push('/login')
   }
 
   render() {
-    console.log(this.props.currentUser)
-    return (
-      <div className="dash-wrapper">
-        <DashboardLeft currentUser={this.props.currentUser}/>
-        <div className="dash-right">
-          <DashboardHeader logout={this.logout}/>
-          <div className="dash-main">
+    console.log(this.props.currentUser, "original");
+    if (!this.props.isLoading && this.props.currentUser) {
+      return (
+          <div className="dash-wrapper">
+            <DashboardLeft currentUser={this.props.currentUser}/>
+            <div className="dash-right">
+              <DashboardHeader logout={this.logout}/>
+              <div className="dash-main">
 
-            <div>
-              <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
-              <Route path="/dashboard/projects/new" component={ProjectForm}/>
-              <Route path="/dashboard/profile/:id" component={UserProfile}/>
+                <div>
+                  <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
+                  <Route path="/dashboard/projects/new" component={ProjectForm}/>
+                  <Route path="/dashboard/profile/:id" component={UserProfile}/>
+                  <Route path="/dashboard/requests" component={RequestContainer}/>
+                </div>
+              </div>
+              <DashboardUsers/>
             </div>
-          </div>
-          <DashboardUsers/>
-        </div>
 
-      </div>
-    )
+          </div>
+        )
+    } else {
+      return (
+        <div>Loaddddding....</div>
+      )
+    }
   }
 }
 
