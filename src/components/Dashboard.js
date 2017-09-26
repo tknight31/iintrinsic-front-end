@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
   logout = () => {
     Auth.logOut()
     this.props.history.push('/login')
+
   }
 
   render() {

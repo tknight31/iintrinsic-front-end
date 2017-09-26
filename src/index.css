@@ -9,13 +9,23 @@ h1, h2, h3, h4 {
   margin:.6em auto;
 }
 
+input, textarea {
+  border-radius: 10rem;
+  padding:5px;
+  box-sizing: border-box;
+}
+
+input[type="text"], textarea {
+  border:solid #cacaca 1px;
+}
+
 .button {
-  border-radius: 15rem;
+  border-radius: 10rem;
   border: none;
   background: #ffc400;
   color:white;
   font-size: 1em;
-  padding:8px 12px;
+  padding:5px 12px;
 }
 
 .button:hover {
@@ -205,7 +215,7 @@ flex-flow: row wrap;
 
 .user-profile-info .profile-image{
   height:150px;
-  width:175px;
+  width:150px;
   margin:12px;
   border: solid gray 5px;
 }
@@ -213,6 +223,7 @@ flex-flow: row wrap;
 .profile-mid {
   padding:0 12px;
   border-right:solid gray 1px;
+  flex: 1 0;
 }
 .profile-right {
   padding:0 12px;
@@ -234,5 +245,23 @@ flex-flow: row wrap;
   background: rgba(255, 255, 255, 0.59);
   display: inline-block;
   border-radius: 10px;
+  margin-right: 3px;
   border: #cacaca solid 1px;
+}
+
+.skills-list {
+  margin: 2px auto 30px auto;
+}
+
+.skills-form {
+  margin-left: 15px;
+}
+
+.skills-form input[type="text"]  {
+  margin-right: 8px;
+}
+
+.skills-head {
+  display: inline-flex;
+  align-items: baseline;
 }
