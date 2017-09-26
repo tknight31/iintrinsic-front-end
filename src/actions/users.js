@@ -76,6 +76,29 @@ export function setCurrentUserLocation(lat, long) {
         "Accept":"application/json"
       }
     })
+  }
+}
+
+
+export function addSkillToUser(name) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const skillJSON = JSON.stringify({
+    name: name
+  })
+
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_USER"})
+    fetch(`http://localhost:3000/api/v1/skills/`,{
+      method: 'POST',
+      body: skillJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
       .then((res) => res.json())
       .then(user => {
         dispatch({type:"FETCHED_CURRENT_USER", payload: user})

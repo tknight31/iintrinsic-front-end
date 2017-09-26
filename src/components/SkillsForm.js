@@ -29,8 +29,6 @@ class ProjectsForm extends React.Component {
       [currInput] : event.target.value
     })
   }
-
-
   render() {
 
     return (

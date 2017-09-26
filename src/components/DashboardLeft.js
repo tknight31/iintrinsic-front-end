@@ -20,7 +20,7 @@ const DashboardLeft = (props) => {
             <ul>
               <li><Link to={`/dashboard/home`}>Dashboard</Link></li>
               <li><Link to={`/dashboard/projects`}>My Projects</Link></li>
-              <li><Link to={`/dashboard/profile`}>My Profile</Link></li>
+              <li><Link to={`/dashboard/profile/${props.currentUser.id}`}>My Profile</Link></li>
               <li><Link to={`/dashboard/messages`}>Messages</Link></li>
             </ul>
 

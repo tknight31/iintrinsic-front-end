@@ -217,3 +217,22 @@ flex-flow: row wrap;
 .profile-right {
   padding:0 12px;
 }
+
+.header-link {
+  text-decoration: none;
+  font-size: .7em;
+  font-weight:normal;
+}
+
+.header-link a {
+  text-decoration: none;
+  font-weight:normal;
+  letter-spacing: 1px;
+}
+.skill-item {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.59);
+  display: inline-block;
+  border-radius: 10px;
+  border: #cacaca solid 1px;
+}

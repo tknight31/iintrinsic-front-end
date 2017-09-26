@@ -38,7 +38,7 @@ export class MapContainer extends React.Component {
       longitude: crd.longitude
     })
 
-    this.props.setCurrentUserLocation(crd.latitude, crd.longitude)
+    setTimeout(this.props.setCurrentUserLocation(crd.latitude, crd.longitude), 2000)
 
   }
 

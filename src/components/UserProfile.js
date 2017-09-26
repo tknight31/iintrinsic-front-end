@@ -4,20 +4,50 @@ import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'
 import ProjectPreview from './ProjectPreview'
+import SkillItem from './SkillItem'
 
 
 class UserProfile extends React.Component {
+
+  state = {
+    name: ""
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    this.props.addSkillToUser(this.state.name)
+    this.setState({
+      name: ""
+    })
+  }
+
+  handleInputChange = (event) => {
+    const currInput = event.target.name
+    this.setState({
+      [currInput] : event.target.value
+    })
+  }
 
   componentDidMount() {
     this.props.getUserData(this.props.match.params.id)
   }
 
+  isCurrentUser() {
+    return this.props.currentUser.id === this.props.user.id
+  }
+
   render() {
-    console.log(this.props.user.projects, "HERE");
       const imgStyle = this.props.user["user_image"] ? {backgroundImage: 'url(../../images/' + this.props.user["user_image"] + ')'} : null
       const numberOfProjects = this.props.user.projects ? this.props.user.projects.length : null
 
       const currUserProjects = this.props.user.projects ? this.props.user.projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
+      const currUserSkills = this.props.user.skills ? this.props.user.skills.map((skill, index) => <SkillItem key={index} skill={skill}/>) : null
+
+      const skillsForm = <form className="skills-form" onSubmit={this.handleSubmit}>
+              <div><label>Add</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /><input type="submit" value="Submit"/></div>
+              </form>
+
 
     if (!this.props.isLoading) {
         return (
@@ -38,11 +68,12 @@ class UserProfile extends React.Component {
             </div>
 
             <h2>Skills</h2>
-            <div className="profile-projects">
-                {currUserProjects}
+            {this.isCurrentUser() ? skillsForm : null}
+            <div className="skills-list">
+                {currUserSkills}
             </div>
 
-            <h2>Projects</h2>
+            <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">
                 {currUserProjects}
             </div>
@@ -59,6 +90,7 @@ class UserProfile extends React.Component {
 function mapStateToProps(state) {
   return {
      user: state.users.displayedUser,
+     currentUser: state.users.currentUser,
      isLoading:state.users.isLoading
   }
 }
