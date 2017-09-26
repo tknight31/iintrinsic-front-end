@@ -26,13 +26,26 @@ export function addSkill(skillName) {
 }
 
 
-export function removeSkill(name) {
+export function removeSkill(skillObj) {
+
   const jwtToken = localStorage.getItem("token")
 
-  return {
-    type:"REMOVE_PROJECT",
-    payload: name
+  return function (dispatch) {
+    dispatch({type:"FETCHING_SKILLS"})
+    fetch(`http://localhost:3000/api/v1/skills/${skillObj.id}`,{
+          method: 'DELETE',
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(skills => {
+        dispatch({type:"FETCHED_SKILLS", payload: skills})
+      })
   }
+
 }
 
 

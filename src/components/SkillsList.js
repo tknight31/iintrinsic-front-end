@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 class SkillsList extends React.Component {
 
   render() {
-    const SkillItems = this.props.skills.map((skill) => <SkillItem key={skill.id} skill={skill}/>)
+    const SkillItems = this.props.skills.map((skill) => <SkillItem key={skill.id} skill={skill} removeSkill={this.props.removeSkill}/>)
 
       return (
         <div className="skills-list">

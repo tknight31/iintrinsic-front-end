@@ -19,6 +19,7 @@ class App extends Component {
         <Route path="/dashboard" component={authorize(Dashboard)}/>
         <Route path="/login" render={(props) => <LoginForm login={this.loginUser} {...props}/>}/>
         <Route path="/signup" render={(props) => <SignupForm login={this.loginUser} {...props}/>}/>
+        <div className="bg-filter"></div>
       </div>
     );
   }

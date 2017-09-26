@@ -17,12 +17,12 @@ class UserProfile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
     this.props.actions.addSkill(this.state.name)
     this.setState({
       name: ""
     })
   }
+
 
   handleInputChange = (event) => {
     const currInput = event.target.name
@@ -58,7 +58,7 @@ class UserProfile extends React.Component {
           <div className="user-profile-container">
 
             <div className="user-profile-info">
-              <div className="profile-image" style={imgStyle}></div>
+              <div className="profile-image-border" ><div className="profile-image" style={imgStyle}></div></div>
               <div className="profile-mid">
                 <h2>{this.props.user["first_name"]} {this.props.user["last_name"]}</h2>
                 <h4>{this.props.user["role"]}</h4>
@@ -74,7 +74,7 @@ class UserProfile extends React.Component {
               <h2>Skills</h2>
               {this.isCurrentUser() ? skillsForm : null}
             </div>
-            <SkillsList skills={this.props.skills}/>
+            <SkillsList skills={this.props.skills} removeSkill={this.props.actions.removeSkill}/>
 
             <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">
