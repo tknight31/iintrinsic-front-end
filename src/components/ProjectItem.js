@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
@@ -23,7 +24,7 @@ const ProjectItem = (props) => {
         <div style={imgStyle} className="small-avatar"></div>
       </div>
       <div className="project-info">
-        <h2>{props.project.name}</h2>
+        <Link to={`/dashboard/project/${props.project.id}`}><h2>{props.project.name}</h2></Link>
         <p>{props.project["short_desc"]}</p>
       </div>
       <div className="project-members">

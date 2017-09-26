@@ -1,8 +1,6 @@
 import React from 'react'
 import SkillItem from './SkillItem'
-import { connect } from 'react-redux'
-import * as SkillsActions from '../actions/skills'
-import { bindActionCreators } from 'redux'
+
 
 class SkillsList extends React.Component {
 
@@ -18,16 +16,5 @@ class SkillsList extends React.Component {
 }
 
 
-function mapStateToProps(state) {
-  return {
-     skills: state.skills.list,
-     isLoading:state.skills.isLoading
-  }
-}
 
-function mapDispatchToProps(dispatch) {
-
-  return bindActionCreators(SkillsActions, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SkillsList)
+export default SkillsList

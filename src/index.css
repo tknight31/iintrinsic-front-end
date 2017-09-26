@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,600,700');
 
 html {
-  height: 100%;
+  min-height: 100vh;
 }
 
 body {
@@ -13,8 +13,20 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: 'Poppins', sans-serif;
+  background:linear-gradient(135deg, rgb(215, 230, 255) 0%, #edefdc 50%, #eaefdc 55%, rgb(217, 227, 255) 100%);
+}
+
+body:before {
+    content: "";
+    right: 0;
+    top: 0;
+    z-index: -1;
+    position: absolute;
+    width: 587px;
+    height: 705px;
+    background: url("images/right_top.png") no-repeat left top;
 }
 
 .bg-filter {
@@ -23,8 +35,29 @@ body {
   bottom:0;
   right:0;
   left:0;
-  background: rgba(255, 255, 255, 0.50);
   z-index: -1;
+  min-height: 100vh;
+}
+
+.bg-filter:before {
+    content: "";
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: 467px;
+    height: 610px;
+    background: url("images/right_bottom.png") no-repeat left top;
+}
+
+.bg-filter:after {
+    content: "";
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    width: 472px;
+    height: 354px;
+    background: url("images/left_bottom.png") no-repeat left top;
+    z-index: -1;
 }
 
 h1, h2, h3, h4 {
@@ -77,16 +110,17 @@ flex-flow: row wrap;
 }
 
 .dash-header {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.43);
   flex: 1 100%;
   color: #cfd7dc;
 }
 
-.dash-main {
+div.dash-main {
   text-align: left;
   flex: 1 0;
   min-height: 900px;
   position: relative;
+  padding:30px;
 }
 .map-holder {
   position: relative;
@@ -147,6 +181,10 @@ flex-flow: row wrap;
   border-bottom: #ababab solid 1px;
 }
 
+.dash-main-head h2 {
+  margin-top:0
+}
+
 .logo, .avatar {
   border-bottom: black solid 1px;
   padding-bottom: 12px;
@@ -154,6 +192,10 @@ flex-flow: row wrap;
 
 .avatar {
   text-align: center;
+}
+
+.avatar .profile-image {
+  margin:12px auto;
 }
 
 .left-nav {
@@ -240,10 +282,9 @@ flex-flow: row wrap;
   background-position: center center;
 }
 .user-profile-container {
-
   padding:12px;
-
 }
+
 .user-profile-info {
   display: flex;
   background-color: white;
@@ -268,8 +309,6 @@ flex-flow: row wrap;
   padding:7px;
   margin:12px;
   background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
-
-
 }
 
 .profile-mid {
@@ -352,4 +391,52 @@ flex-flow: row wrap;
 .skills-head {
   display: inline-flex;
   align-items: baseline;
+}
+
+/*Project Show Page*/
+
+.user-profile-info .profile-image{
+  height:150px;
+  width:150px;
+
+}
+
+.project-show-details {
+  background:white;
+  display:flex;
+}
+
+.project-show-details > * {
+    width:50%;
+    box-sizing: border-box;
+    padding:22px;
+}
+
+.project-show-goals {
+  border-right:solid #e0e0e0 1px;
+}
+
+.project-user-item .profile-image-border{
+  display: inline-block;
+  height:150px;
+  width:150px;
+  border-radius: 500rem;
+  padding:7px;
+  margin:12px;
+  background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+}
+
+.large-avatar {
+  height:150px;
+  width:150px;
+  border-radius: 500rem;
+  background-image: url("images/default-user.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.project-user-list {
+  display:flex;
+  text-align: center;
 }

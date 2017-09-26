@@ -52,6 +52,44 @@ export function makeRequest(project) {
 
 }
 
+export function getProjectData(id) {
+  const jwtToken = localStorage.getItem("token")
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECT"})
+    fetch(`http://localhost:3000/api/v1/projects/${id}`,{
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then(project => {
+        dispatch({type:"FETCHED_PROJECT", payload: project})
+      })
+  }
+}
+
+export function getProjectUsers(id) {
+  const jwtToken = localStorage.getItem("token")
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECT"})
+    fetch(`http://localhost:3000/api/v1/projects/${id}/users`,{
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then(users => {
+        dispatch({type:"FETCHED_PROJECT_USERS", payload: users})
+      })
+  }
+}
+
 
 export function removeProject(title) {
   const jwtToken = localStorage.getItem("token")

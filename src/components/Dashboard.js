@@ -6,6 +6,7 @@ import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './ProjectsContainer'
 import RequestContainer from './RequestContainer'
+import ProjectShow from './ProjectShow'
 import ProjectForm from './ProjectForm'
 import UserProfile from './UserProfile'
 import { connect } from 'react-redux'
@@ -39,6 +40,7 @@ class Dashboard extends React.Component {
                   <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
                   <Route path="/dashboard/projects/new" component={ProjectForm}/>
                   <Route path="/dashboard/profile/:id" component={UserProfile}/>
+                  <Route path="/dashboard/project/:id" component={ProjectShow}/>
                   <Route path="/dashboard/requests" component={RequestContainer}/>
                 </div>
               </div>
