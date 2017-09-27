@@ -12,7 +12,15 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-const rootReducer = combineReducers({users: usersReducer, projects: projectsReducer, skills: skillsReducer})
+
+const appReducer = combineReducers({users: usersReducer, projects: projectsReducer, skills: skillsReducer})
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT') {
+    state = undefined
+  }
+  return appReducer(state, action)
+}
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 

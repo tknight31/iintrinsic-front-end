@@ -98,3 +98,12 @@ export function setCurrentUserLocation(lat, long) {
     })
   }
 }
+
+export function logoutUser() {
+  localStorage.removeItem('token')
+  localStorage.removeItem('id')
+
+  return function (dispatch) {
+    dispatch({type:"USER_LOGOUT"})  
+  }
+}

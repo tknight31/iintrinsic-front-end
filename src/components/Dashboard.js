@@ -22,13 +22,13 @@ class Dashboard extends React.Component {
   }
 
   logout = () => {
-    Auth.logOut()
+    this.props.logoutUser()
     this.props.history.push('/login')
 
   }
 
   render() {
-    console.log(this.props.currentUser, "original");
+
     if (!this.props.isLoading && this.props.currentUser) {
       return (
           <div className="dash-wrapper">
