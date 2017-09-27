@@ -86,12 +86,21 @@ input[type="text"], textarea {
   background: -moz-linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+  background: linear-gradient(16deg, #ead834 0%,#ffc400 54%,#d6ab1b 100%);
+
+}
+
+.deactive {
+  background:gray;
 }
 
 .button:hover {
   background: #d2a307;
   cursor: pointer;
+}
+
+.deactive:hover {
+  background:gray;
 }
 
 
@@ -118,9 +127,9 @@ flex-flow: row wrap;
 div.dash-main {
   text-align: left;
   flex: 1 0;
-  min-height: 900px;
   position: relative;
   padding:30px;
+  min-height: 90vh;
 }
 .map-holder {
   position: relative;
@@ -222,6 +231,10 @@ div.dash-main {
   overflow-y: scroll;
 }
 
+.my-projects .project-item button {
+  display:none;
+}
+
 .project-item, .user-item {
   display: flex;
   align-items: center;
@@ -237,6 +250,19 @@ div.dash-main {
   box-shadow: 0px 16px 25px 0px rgba(118, 88, 198, 0.1);
 }
 
+.project-item a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.project-item a:hover {
+  color: #ffc400;
+}
+
+.project-item h2 {
+  display:inline-block;
+}
+
 .project-members {
   text-align: center;
 }
@@ -247,6 +273,7 @@ div.dash-main {
 
 .project-item:nth-child(odd) {
   background: #FFF;
+  background: linear-gradient(55deg, rgb(224, 230, 239) 0%, rgb(255, 255, 255) 23%, rgb(255, 255, 255) 100%);
 }
 
 .user-item {
@@ -309,6 +336,7 @@ div.dash-main {
   padding:7px;
   margin:12px;
   background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+  background: linear-gradient(16deg, #ef8c68 0%, rgb(255, 196, 0) 54%, #d6ab1b 100%);
 }
 
 .profile-mid {
@@ -329,7 +357,7 @@ div.dash-main {
   padding:0 12px;
 }
 .profile-projects {
-  height:500px;
+  height:525px;
   overflow-y:auto;
 }
 
@@ -393,6 +421,30 @@ div.dash-main {
   align-items: baseline;
 }
 
+/*Request Page*/
+
+.request-item {
+  display:flex;
+  align-items: center;
+  background-color: white;
+  padding:6px 12px;
+  margin-bottom: 8px;
+  border-radius:2rem;
+}
+
+.request-item button {
+   margin: 0 4px;
+}
+
+.request-item .small-avatar {
+  margin-right: 10px;
+}
+
+.project-request-info{
+  flex: 1 0;
+}
+
+
 /*Project Show Page*/
 
 .user-profile-info .profile-image{
@@ -424,6 +476,7 @@ div.dash-main {
   padding:7px;
   margin:12px;
   background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+  background: linear-gradient(16deg, #ef8c68 0%, rgb(255, 196, 0) 54%, #d6ab1b 100%);
 }
 
 .large-avatar {

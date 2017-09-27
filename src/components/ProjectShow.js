@@ -19,7 +19,7 @@ class ProjectShow extends React.Component {
   render() {
     console.log(this.props, "project details");
 
-    if (!this.props.isLoadingProjects) {
+    if (!this.props.isLoadingProjects && this.props.project.creator) {
       return (
         <div className="project-show-container">
           <div className="dash-main-head">
@@ -43,7 +43,7 @@ class ProjectShow extends React.Component {
           </div>
           <div className="project-show-users">
               <h2>Group Members</h2>
-              <ProjectUserList users={this.props.projectUsers}/>
+              <ProjectUserList users={this.props.projectUsers} creator={this.props.project.creator}/>
           </div>
         </div>
 

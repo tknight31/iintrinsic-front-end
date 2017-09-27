@@ -2,21 +2,33 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ProjectRequest from './ProjectRequest'
-import * as UserActions from '../actions/users'
+import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
 
 
 class RequestContainer extends React.Component {
 
+
+  componentDidMount(){
+    this.props.fetchUserCreatedProjects(localStorage.getItem("id"))
+  }
+
   filteredProjects = () => {
-    this.props.currentUser.projects.filter(project => project.requests)
+    return this.props.userCreatedProjects.filter(project => project.requests)
+
+  }
+
+  updateRequest = (request, newStatus) => {
+    console.log(this.props, "function should be here");
+      this.props.updateRequest(request, newStatus)
   }
 
 
   render() {
 
-    if (!this.props.isLoading && this.props.currentUser["created_projects"]) {
-      const userProjects = this.props.currentUser["created_projects"].map((project, index) => <ProjectRequest key={index} project={project}/>)
+    if (!this.props.isLoading && this.props.userCreatedProjects) {
+      console.log(this.props.userCreatedProjects, "heres the created projects");
+      const userProjects = this.filteredProjects().map((project, index) => <ProjectRequest key={index} project={project} updateRequest={this.updateRequest}/>)
         return (
           <div>{userProjects}</div>
         )
@@ -30,14 +42,14 @@ class RequestContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-     currentUser: state.users.currentUser,
-     isLoading:state.users.isLoading
+     userCreatedProjects: state.projects.userCreatedProjects,
+     isLoading:state.projects.isLoading
   }
 }
 
 function mapDispatchToProps(dispatch) {
 
-  return bindActionCreators(UserActions, dispatch)
+  return bindActionCreators(ProjectActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestContainer)

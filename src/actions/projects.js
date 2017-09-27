@@ -52,6 +52,31 @@ export function makeRequest(project) {
 
 }
 
+
+export function updateRequest(request, newStatus) {
+
+  const jwtToken = localStorage.getItem("token")
+  const newStatusJSON = JSON.stringify({ status: newStatus })
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch(`http://localhost:3000/api/v1/requests/${request.id}`,{
+          method: 'POST',
+          body: newStatusJSON,
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(projects => {
+        dispatch({type:"FETCHED_USER_CREATED_PROJECTS", payload: projects})
+      })
+  }
+
+}
+
 export function getProjectData(id) {
   const jwtToken = localStorage.getItem("token")
 
@@ -97,6 +122,26 @@ export function removeProject(title) {
   return {
     type:"REMOVE_PROJECT",
     payload: title
+  }
+}
+
+export function fetchUserCreatedProjects(id) {
+  const jwtToken = localStorage.getItem("token")
+
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch(`http://localhost:3000/api/v1/projects/created/${id}`,{
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then(projects => {
+        dispatch({type:"FETCHED_USER_CREATED_PROJECTS", payload: projects})
+      })
   }
 }
 

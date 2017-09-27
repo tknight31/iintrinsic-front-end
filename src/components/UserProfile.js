@@ -46,6 +46,7 @@ class UserProfile extends React.Component {
       const numberOfProjects = this.props.user.projects ? this.props.user.projects.length : null
 
       const currUserProjects = this.props.user.projects ? this.props.user.projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
+      const currUserCreatedProjects = this.props.user.created_projects ? this.props.user.created_projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
       const currUserSkills = this.props.user.skills ? this.props.user.skills.map((skill, index) => <SkillItem key={index} skill={skill}/>) : null
 
       const skillsForm = <form className="skills-form" onSubmit={this.handleSubmit}>
@@ -78,6 +79,9 @@ class UserProfile extends React.Component {
 
             <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">
+              <h3>Created</h3>
+              {currUserCreatedProjects}
+              <h3>Collaborated</h3>
                 {currUserProjects}
             </div>
           </div>

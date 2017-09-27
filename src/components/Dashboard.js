@@ -5,6 +5,7 @@ import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './ProjectsContainer'
+import MyProjects from './MyProjects'
 import RequestContainer from './RequestContainer'
 import ProjectShow from './ProjectShow'
 import ProjectForm from './ProjectForm'
@@ -39,6 +40,7 @@ class Dashboard extends React.Component {
                 <div>
                   <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
                   <Route path="/dashboard/projects/new" component={ProjectForm}/>
+                  <Route path="/dashboard/projects/all" component={MyProjects}/>
                   <Route path="/dashboard/profile/:id" component={UserProfile}/>
                   <Route path="/dashboard/project/:id" component={ProjectShow}/>
                   <Route path="/dashboard/requests" component={RequestContainer}/>

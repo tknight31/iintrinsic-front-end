@@ -29,10 +29,10 @@ const ProjectItem = (props) => {
       </div>
       <div className="project-members">
         <p>Members</p>
-        <strong>{props.project.users.length}</strong>
+        <strong>{props.project.requests.filter(request => request.current_status === "accepted").length}</strong>
       </div>
       <div className="project-button">
-        { alreadyInProject() ? <button className="button">View</button> : <button className="button" onClick={handleClick}>Join</button>}
+        { alreadyInProject() ? <button className="button deactive">Requested</button> : <button className="button" onClick={handleClick}>Join</button>}
       </div>
 
     </div>

@@ -1,4 +1,4 @@
-function projectsReducer(state = {list:[], users:[], isLoading:false, displayedProject:{}}, action){
+function projectsReducer(state = {list:[], users:[], userCreatedProjects:[], isLoading:false, displayedProject:{}}, action){
 
 
   switch (action.type) {
@@ -12,6 +12,8 @@ function projectsReducer(state = {list:[], users:[], isLoading:false, displayedP
         return Object.assign({}, state, {displayedProject: action.payload, isLoading: false})
       case "FETCHED_PROJECT_USERS":
         return Object.assign({}, state, {users: action.payload, isLoading: false})
+        case "FETCHED_USER_CREATED_PROJECTS":
+          return Object.assign({}, state, {userCreatedProjects: action.payload, isLoading: false})
       default:
         return state
     }
