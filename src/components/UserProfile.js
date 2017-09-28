@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux'
 import ProjectPreview from './ProjectPreview'
 import SkillsList from './SkillsList'
 import SkillItem from './SkillItem'
+import { TweenMax } from 'gsap'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 
 class UserProfile extends React.Component {
@@ -35,6 +37,8 @@ class UserProfile extends React.Component {
     console.log(this.props)
     this.props.actions.getUserData(this.props.match.params.id)
     this.props.actions.fetchSkills(this.props.match.params.id)
+    const els = document.querySelectorAll('.project-item')
+    TweenMax.staggerFromTo(els, 1, {opacity: 0, y: -20}, {opacity: 1, y:0}, .2)
   }
 
   isCurrentUser() {
@@ -59,7 +63,7 @@ class UserProfile extends React.Component {
           <div className="user-profile-container">
 
             <div className="user-profile-info">
-              <div className="profile-image-border" ><div className="profile-image" style={imgStyle}></div></div>
+              <div className="profile-image-border"><div className="profile-image" style={imgStyle}></div></div>
               <div className="profile-mid">
                 <h2>{this.props.user["first_name"]} {this.props.user["last_name"]}</h2>
                 <h4>{this.props.user["role"]}</h4>
@@ -79,10 +83,15 @@ class UserProfile extends React.Component {
 
             <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">
-              <h3>Created</h3>
-              {currUserCreatedProjects}
-              <h3>Collaborated</h3>
-                {currUserProjects}
+              <CSSTransitionGroup
+                transitionName="example"
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={300}>
+                  <h3>Created</h3>
+                  {currUserCreatedProjects}
+                  <h3>Collaborated</h3>
+                    {currUserProjects}
+                </CSSTransitionGroup>
             </div>
           </div>
         )

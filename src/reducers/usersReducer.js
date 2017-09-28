@@ -1,4 +1,4 @@
-function usersReducer(state = {list:[], isLoading:false, currentUser:{}, displayedUser:{}}, action){
+function usersReducer(state = {list:[], isLoading:false, ghostMode:false, currentUser:{}, displayedUser:{}}, action){
 
   switch (action.type) {
       case "FETCHING_USERS":
@@ -8,9 +8,12 @@ function usersReducer(state = {list:[], isLoading:false, currentUser:{}, display
       case "FETCHING_USER":
         return Object.assign({}, state, {isLoading: true})
       case "FETCHED_CURRENT_USER":
-        return Object.assign({}, state, {currentUser: action.payload, isLoading: false})
+        return Object.assign({}, state, {currentUser: action.payload, isLoading: false, ghostMode: action.payload.ghost_mode})
       case "FETCHED_USER":
         return Object.assign({}, state, {displayedUser: action.payload, isLoading: false})
+      case "SWITCH_GHOST_MODE":
+        console.log(action.payload, "payload");
+        return Object.assign({}, state, {ghostMode: action.payload, isLoading: false})
       default:
         return state
     }

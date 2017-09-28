@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
 
+
 class ProjectsContainer extends React.Component {
   componentDidMount() {
     this.props.fetchProjects()

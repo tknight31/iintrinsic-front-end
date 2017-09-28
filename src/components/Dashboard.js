@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
           <div className="dash-wrapper">
             <DashboardLeft currentUser={this.props.currentUser}/>
             <div className="dash-right">
-              <DashboardHeader logout={this.logout}/>
+              <DashboardHeader logout={this.logout} currentUser={this.props.currentUser}/>
               <div className="dash-main">
 
                 <div>

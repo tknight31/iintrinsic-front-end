@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
+import { CSSTransitionGroup } from 'react-transition-group'
+
 
 
 const ProjectItem = (props) => {

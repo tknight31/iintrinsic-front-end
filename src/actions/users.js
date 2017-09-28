@@ -99,11 +99,36 @@ export function setCurrentUserLocation(lat, long) {
   }
 }
 
+export function switchGhostMode(ghostMode) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const ghostJSON = JSON.stringify({
+    ghost_mode: ghostMode
+  })
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_USER"})
+    fetch(`http://localhost:3000/api/v1/users/${id}/ghost`,{
+      method: 'POST',
+      body: ghostJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(ghostMode => {
+      dispatch({type:"SWITCH_GHOST_MODE", payload: ghostMode})
+    })
+  }
+}
+
 export function logoutUser() {
   localStorage.removeItem('token')
   localStorage.removeItem('id')
 
   return function (dispatch) {
-    dispatch({type:"USER_LOGOUT"})  
+    dispatch({type:"USER_LOGOUT"})
   }
 }
