@@ -1,6 +1,5 @@
 import React from 'react'
 import ProjectList from './ProjectList'
-import MapContainer from './MapContainer'
 import { connect } from 'react-redux'
 import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'

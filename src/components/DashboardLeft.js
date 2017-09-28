@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const DashboardLeft = (props) => {
 
-    const imgStyle = props.currentUser["user_image"] ? {backgroundImage: 'url(../../images/' + props.currentUser["user_image"] + ')'} : null
+    const imgStyle = props.userImage ? {backgroundImage: 'url(' + props.userImage + ')'} : null
 
   return (
     <div className="dash-left">
@@ -21,6 +21,7 @@ const DashboardLeft = (props) => {
               <li><Link to={`/dashboard/home`}>Dashboard</Link></li>
               <li><Link to={`/dashboard/projects/all`}>My Projects</Link></li>
               <li><Link to={`/dashboard/profile/${props.currentUser.id}`}>My Profile</Link></li>
+              <li><Link to={`/dashboard/user/edit`}>Edit Profile</Link></li>
               <li><Link to={`/dashboard/messages`}>Messages</Link></li>
             </ul>
 

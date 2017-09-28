@@ -12,7 +12,7 @@ const ProjectPreview = (props) => {
 
 
 
-  const imgStyle = props.project.creator["user_image"] ? {backgroundImage: 'url(../../images/' + props.project.creator["user_image"] + ')'} : null
+  const imgStyle = props.project.creator["user_image"] ? {backgroundImage: 'url(' + props.project.creator["user_image"] + ')'} : null
   return (
     <div className="project-item">
       <div className="project-owner">

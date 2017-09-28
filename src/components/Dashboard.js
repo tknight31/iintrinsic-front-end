@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Auth from '../adapters/auth'
 import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
@@ -10,6 +9,7 @@ import RequestContainer from './RequestContainer'
 import ProjectShow from './ProjectShow'
 import ProjectForm from './ProjectForm'
 import UserProfile from './UserProfile'
+import ProfileEditForm from './ProfileEditForm'
 import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
     if (!this.props.isLoading && this.props.currentUser) {
       return (
           <div className="dash-wrapper">
-            <DashboardLeft currentUser={this.props.currentUser}/>
+            <DashboardLeft currentUser={this.props.currentUser} userImage={this.props.userImage}/>
             <div className="dash-right">
               <DashboardHeader logout={this.logout} currentUser={this.props.currentUser}/>
               <div className="dash-main">
@@ -44,6 +44,7 @@ class Dashboard extends React.Component {
                   <Route path="/dashboard/profile/:id" component={UserProfile}/>
                   <Route path="/dashboard/project/:id" component={ProjectShow}/>
                   <Route path="/dashboard/requests" component={RequestContainer}/>
+                  <Route path="/dashboard/user/edit" render={(props) => <ProfileEditForm updateUserInfo={this.props.updateUserInfo} currentUser={this.props.currentUser} userImage={this.props.userImage} {...props}/>}/>
                 </div>
               </div>
               <DashboardUsers/>
@@ -61,7 +62,8 @@ class Dashboard extends React.Component {
 
 function mapStateToProps(state) {
   return {
-     currentUser: state.users.currentUser
+     currentUser: state.users.currentUser,
+     userImage: state.users.userImage
   }
 }
 

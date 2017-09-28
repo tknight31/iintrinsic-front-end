@@ -46,7 +46,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-      const imgStyle = this.props.user["user_image"] ? {backgroundImage: 'url(../../images/' + this.props.user["user_image"] + ')'} : null
+      const imgStyle = this.props.user["user_image"] ? {backgroundImage: 'url(' + this.props.user["user_image"] + ')'} : null
       const numberOfProjects = this.props.user.projects ? this.props.user.projects.length : null
 
       const currUserProjects = this.props.user.projects ? this.props.user.projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
@@ -79,7 +79,7 @@ class UserProfile extends React.Component {
               <h2>Skills</h2>
               {this.isCurrentUser() ? skillsForm : null}
             </div>
-            <SkillsList skills={this.props.skills} removeSkill={this.props.actions.removeSkill}/>
+            <SkillsList skills={this.props.skills} removeSkill={this.props.actions.removeSkill} isCurrentUser={this.isCurrentUser()}/>
 
             <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">

@@ -1,11 +1,6 @@
 export function addProject(project) {
 
-  const projectJSON = JSON.stringify({
-    name: project.name,
-    category: project.category,
-    long_desc: project["long_desc"],
-    short_desc: project["short_desc"]
-  })
+  const projectJSON = JSON.stringify(project)
 
   const jwtToken = localStorage.getItem("token")
 

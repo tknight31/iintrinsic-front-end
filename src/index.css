@@ -228,6 +228,7 @@ div.dash-main {
 
 .dash-main-head {
   border-bottom: #ababab solid 1px;
+  margin-bottom:25px;
 }
 
 .dash-main-head h2 {
@@ -537,6 +538,35 @@ div.dash-main {
   display:flex;
   text-align: center;
 }
+
+/*Edit User Page*/
+
+.edit-wrapper {
+  display: flex;
+}
+
+.edit-wrapper > * {
+  margin: 0 12px;
+}
+
+.edit-image-upload {
+  display:flex;
+}
+
+.edit-image-upload > * {
+  margin: 0 12px;
+}
+/*Project Form*/
+.project-form-wrapper {
+  display: flex;
+}
+
+.project-form-wrapper > * {
+  flex:1 0;
+}
+
+
+/*Transistions*/
 
 .example-enter {
   opacity: 0.01;

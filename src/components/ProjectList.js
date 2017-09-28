@@ -4,9 +4,6 @@ import { TweenMax } from 'gsap'
 
 class ProjectsList extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount = () => {
      const els = document.querySelectorAll('.project-item')

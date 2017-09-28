@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const UserItem = (props) => {
-  const imgStyle = props.user["user_image"] ? {backgroundImage: 'url(../../images/' + props.user["user_image"] + ')'} : null
+  const imgStyle = props.user["user_image"] ? {backgroundImage: 'url(' + props.user["user_image"] + ')'} : null
   return (
     <div className="user-item">
       <div style={imgStyle} className="small-avatar"></div>

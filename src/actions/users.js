@@ -87,7 +87,7 @@ export function setCurrentUserLocation(lat, long) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+    fetch(`http://localhost:3000/api/v1/users/${id}/location`,{
       method: 'POST',
       body: latLongJSON,
       headers: {
@@ -120,6 +120,52 @@ export function switchGhostMode(ghostMode) {
     .then((res) => res.json())
     .then(ghostMode => {
       dispatch({type:"SWITCH_GHOST_MODE", payload: ghostMode})
+    })
+  }
+}
+
+export function updateUserImage(imgUrl) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const imgJSON = JSON.stringify({
+    user_image: imgUrl
+  })
+  return function (dispatch) {
+    dispatch({type:"FETCHING_USER"})
+    fetch(`http://localhost:3000/api/v1/users/${id}/image`,{
+      method: 'POST',
+      body: imgJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(imageURL => {
+      dispatch({type:"UPDATE_IMAGE", payload: imageURL.url})
+    })
+  }
+}
+
+export function updateUserInfo(userData) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const userJSON = JSON.stringify(userData)
+  return function (dispatch) {
+    dispatch({type:"FETCHING_USER"})
+    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+      method: 'POST',
+      body: userJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(user => {
+      dispatch({type:"FETCHED_CURRENT_USER", payload: user})
     })
   }
 }

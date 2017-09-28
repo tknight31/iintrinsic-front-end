@@ -6,10 +6,10 @@ const SkillItem = (props) => {
   const handleClick = () => {
     props.removeSkill(props.skill)
   }
-
+  console.log(props);
   return (
     <div className="skill-item">
-      <span onClick={handleClick}>Remove?</span>
+      {props.isCurrentUser ? <span onClick={handleClick}>Remove?</span> : null}
       {props.skill.name}
     </div>
   )
