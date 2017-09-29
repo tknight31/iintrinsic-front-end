@@ -4,6 +4,7 @@ export function addProject(project) {
 
   const jwtToken = localStorage.getItem("token")
 
+
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
     fetch('http://localhost:3000/api/v1/projects',{
@@ -44,9 +45,51 @@ export function makeRequest(project) {
         dispatch({type:"FETCHED_PROJECTS", payload: projects})
       })
   }
-
 }
 
+export function addNewGoal(goal) {
+
+  const jwtToken = localStorage.getItem("token")
+  const goalJSON = JSON.stringify(goal)
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch('http://localhost:3000/api/v1/goals',{
+          method: 'POST',
+          body: goalJSON,
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(goals => {
+        dispatch({type:"FETCHED_GOALS", payload: goals})
+      })
+  }
+}
+
+export function removeGoal(goal) {
+
+  const jwtToken = localStorage.getItem("token")
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch(`http://localhost:3000/api/v1/goals/${goal.id}`,{
+          method: 'DELETE',
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(goals => {
+        dispatch({type:"FETCHED_GOALS", payload: goals})
+      })
+  }
+}
 
 export function updateRequest(request, newStatus) {
 
@@ -138,6 +181,55 @@ export function fetchUserCreatedProjects(id) {
         dispatch({type:"FETCHED_USER_CREATED_PROJECTS", payload: projects})
       })
   }
+}
+
+export function updateProjectImage(imgUrl, ProjectId) {
+  const jwtToken = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
+  const imgJSON = JSON.stringify({
+    project_image: imgUrl,
+    id: ProjectId
+  })
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECT"})
+    fetch(`http://localhost:3000/api/v1/projects/${ProjectId}/image`,{
+      method: 'POST',
+      body: imgJSON,
+      headers: {
+        "Authorization":`Bearer ${jwtToken}`,
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(imageURL => {
+      dispatch({type:"UPDATE_PRODUCT_IMAGE", payload: imageURL.url})
+    })
+  }
+}
+
+export function updateProjectInfo(project) {
+
+  const jwtToken = localStorage.getItem("token")
+  const projectJSON = JSON.stringify(project)
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch(`http://localhost:3000/api/v1/projects/${project.id}`,{
+          method: 'POST',
+          body: projectJSON,
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(project => {
+        dispatch({type:"FETCHED_PROJECT", payload: project})
+      })
+  }
+
 }
 
 

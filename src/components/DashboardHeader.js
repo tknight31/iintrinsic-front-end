@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import GhostMode from './GhostMode'
+import GhostMode from './users/GhostMode'
 
 
  class DashboardHeader extends React.Component {

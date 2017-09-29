@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import RequestItem from './RequestItem'
+import RequestItem from '../requests/RequestItem'
 
 
 class ProjectRequest extends React.Component {

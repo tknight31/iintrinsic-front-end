@@ -1,5 +1,5 @@
 import React from 'react'
-import UserItem from './UserItem'
+import UserItem from './users/UserItem'
 import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'

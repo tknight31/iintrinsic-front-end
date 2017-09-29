@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as UserActions from '../actions/users'
-import * as ProjectActions from '../actions/projects'
+import * as UserActions from '../../actions/users'
+import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
 import ProjectUserList from './ProjectUserList'
+import GoalItem from '../goals/GoalItem'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,20 +20,20 @@ class ProjectShow extends React.Component {
   render() {
     console.log(this.props, "project details");
 
+    const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal}/>)
+
     if (!this.props.isLoadingProjects && this.props.project.creator) {
       return (
         <div className="project-show-container">
           <div className="dash-main-head">
             <h2>{this.props.project.name}</h2>
+            <Link to={`/dashboard/edit/project/${this.props.project.id}`}>Edit</Link>
           </div>
           <p>{this.props.project.long_desc}</p>
           <div className="project-show-details">
             <div className="project-show-goals">
               <h2>Project Goals</h2>
-              <div className="project-goal">Project Goal</div>
-              <div className="project-goal">Project Goal</div>
-              <div className="project-goal">Project Goal</div>
-              <div className="project-goal">Project Goal</div>
+                {projectGoals}
             </div>
             <div className="project-show-progress">
               <h2>Progress</h2>
@@ -60,6 +62,8 @@ class ProjectShow extends React.Component {
 function mapStateToProps(state) {
   return {
      project: state.projects.displayedProject,
+     projectImage: state.projects.projectImage,
+     goals: state.projects.displayedGoals,
      projectUsers: state.projects.users,
      currentUser: state.users.currentUser,
      isLoadingUsers:state.users.isLoading,

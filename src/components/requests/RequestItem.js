@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as UserActions from '../actions/users'
+import * as UserActions from '../../actions/users'
 import { bindActionCreators } from 'redux'
 
 
 
 
-class ProjectRequest extends React.Component {
+class RequestItem extends React.Component {
   //const imgStyle = props.user["user_image"] ? {backgroundImage: 'url(../../images/' + props.user["user_image"] + ')'} : null
 
   handleAccept = () => {
@@ -57,4 +57,4 @@ class ProjectRequest extends React.Component {
 
 
 
-export default ProjectRequest
+export default RequestItem

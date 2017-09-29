@@ -316,6 +316,10 @@ div.dash-main {
   flex: 1 0;
 }
 
+.project-info h2 {
+  margin: 0 
+}
+
 .project-item:nth-child(odd) {
   background: #FFF;
   background: linear-gradient(55deg, rgb(224, 230, 239) 0%, rgb(255, 255, 255) 23%, rgb(255, 255, 255) 100%);

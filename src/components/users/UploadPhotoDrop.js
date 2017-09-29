@@ -2,7 +2,7 @@ import React from 'react'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import * as UserActions from '../actions/users'
+import * as UserActions from '../../actions/users'
 import { bindActionCreators } from 'redux'
 
 class UploadPhotoDrop extends React.Component {

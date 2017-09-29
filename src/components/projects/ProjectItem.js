@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as ProjectActions from '../actions/projects'
+import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
 import { CSSTransitionGroup } from 'react-transition-group'
 
@@ -31,7 +31,7 @@ const ProjectItem = (props) => {
       </div>
       <div className="project-members">
         <p>Members</p>
-        <strong>{props.project.requests.filter(request => request.current_status === "accepted").length}</strong>
+        <strong>{(props.project.requests.filter(request => request.current_status === "accepted").length) + 1}</strong>
       </div>
       <div className="project-button">
         { alreadyInProject() ? <button className="button deactive">Requested</button> : <button className="button" onClick={handleClick}>Join</button>}

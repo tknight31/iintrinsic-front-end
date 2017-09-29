@@ -9,7 +9,7 @@ const FormGoal = (props) => {
 
   return (
     <div className="goal-el">
-        {props.goal.desc} <span onClick={handleClick}>Remove?</span>
+        {props.goal.description} <span onClick={handleClick}>Remove?</span>
     </div>
   )
 

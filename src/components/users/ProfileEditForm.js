@@ -17,15 +17,7 @@ class ProfileEditForm extends React.Component {
 
       this.props.updateUserInfo(this.state)
       this.props.history.replace("/dashboard/home")
-        // .then((user) => {
-        //   this.setState({
-        //     first_name: "",
-        //     last_name: "",
-        //     role: "engineer",
-        //     bio: ""
-        //   })
-        //
-        // })
+
 
     }
 

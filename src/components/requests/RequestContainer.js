@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ProjectRequest from './ProjectRequest'
-import * as ProjectActions from '../actions/projects'
+import ProjectRequest from '../projects/ProjectRequest'
+import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import ToggleButton from 'react-toggle-button'
 import { connect } from 'react-redux'
-import * as UserActions from '../actions/users'
+import * as UserActions from '../../actions/users'
 import { bindActionCreators } from 'redux'
 
 

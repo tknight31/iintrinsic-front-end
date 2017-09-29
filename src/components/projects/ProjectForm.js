@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as ProjectActions from '../actions/projects'
+import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
-import FormGoal from './FormGoal'
+import FormGoal from '../goals/FormGoal'
 
 class ProjectsForm extends React.Component {
   state = {
@@ -24,7 +24,7 @@ class ProjectsForm extends React.Component {
       long_desc: this.state.long_desc,
       goals: this.state.goals
     })
-    
+
     this.setState({
       name: "",
       category: "",
@@ -41,7 +41,7 @@ class ProjectsForm extends React.Component {
     console.log(this.state.description);
 
     this.setState({
-      goals: [...this.state.goals, {desc: this.state.description}],
+      goals: [...this.state.goals, {description: this.state.description}],
       description : ""
     })
 
@@ -71,6 +71,7 @@ class ProjectsForm extends React.Component {
 
   render() {
 
+
     const goals = this.state.goals.map((goal, index) => <FormGoal key={index} goal={goal} handleDelete={this.handleDelete}/>)
     console.log(this.state.goals);
     return (
@@ -92,10 +93,6 @@ class ProjectsForm extends React.Component {
           </div>
         </div>
       </div>
-
-
-
-
 
     )
 
