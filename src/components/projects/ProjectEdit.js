@@ -78,13 +78,13 @@ class ProjectEdit extends React.Component {
       <div>
 
         <div className="dash-main-head">
-          <h2>Edit Profile</h2>
+          <h2>Edit Project</h2>
         </div>
 
         <div className="edit-wrapper">
           <div className="edit-image-upload">
             <div className="profile-image-border">
-              <div style={imgStyle} className="large-avatar profile-image"></div>
+              <div style={imgStyle} className="project-image-preview"></div>
             </div>
             <UploadPhotoDrop updateProjectImage={this.props.updateProjectImage} projectId={this.props.project.id}/>
           </div>

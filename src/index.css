@@ -272,6 +272,8 @@ div.dash-main {
   overflow-y: scroll;
 }
 
+
+
 .my-projects .project-item button {
   display:none;
 }
@@ -308,6 +310,11 @@ div.dash-main {
   text-align: center;
 }
 
+.project-button {
+  width:150px;
+  text-align: center;
+}
+
 .project-item > * {
   padding: 10px;
 }
@@ -317,7 +324,7 @@ div.dash-main {
 }
 
 .project-info h2 {
-  margin: 0 
+  margin: 0
 }
 
 .project-item:nth-child(odd) {
@@ -386,6 +393,35 @@ div.dash-main {
   margin:12px;
   background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
   background: linear-gradient(16deg, #ef8c68 0%, rgb(255, 196, 0) 54%, #d6ab1b 100%);
+}
+
+.profile-projects > span{
+  margin-top: 25px;
+  display:flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.project-preview-item {
+  width:380px;
+  background:white;
+  border-radius:.5rem;
+  box-shadow: 0px 13px 25px 0px rgba(118, 88, 198, 0.1);
+  margin-bottom:20px;
+}
+.project-preview-bottom {
+  padding:12px;
+  display:flex;
+}
+
+.project-preview-top {
+  height:175px;
+  border-radius: .5rem .5rem 0 0;
+  width:100%;
+  background-image: url("images/default-project.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .profile-mid {
@@ -560,6 +596,7 @@ div.dash-main {
 .edit-image-upload > * {
   margin: 0 12px;
 }
+
 /*Project Form*/
 .project-form-wrapper {
   display: flex;
@@ -569,6 +606,26 @@ div.dash-main {
   flex:1 0;
 }
 
+.project-image-preview {
+  height:200px;
+  width:200px;
+  background-image: url("images/default-project.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/*Goals*/
+
+.goal-el span {
+  font-size:.7em;
+  cursor:pointer;
+}
+
+.goal-el span:hover {
+  font-size:.7em;
+  color:yellow;
+}
 
 /*Transistions*/
 

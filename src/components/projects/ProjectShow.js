@@ -17,6 +17,10 @@ class ProjectShow extends React.Component {
     this.props.actions.getProjectUsers(this.props.match.params.id)
   }
 
+  handleClick = () => {
+    this.props.actions.removeProject(this.props.match.params.id)
+  }
+
   render() {
     console.log(this.props, "project details");
 
@@ -27,7 +31,7 @@ class ProjectShow extends React.Component {
         <div className="project-show-container">
           <div className="dash-main-head">
             <h2>{this.props.project.name}</h2>
-            <Link to={`/dashboard/edit/project/${this.props.project.id}`}>Edit</Link>
+            {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/dashboard/edit/project/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/dashboard/projects/all`}>Delete</Link></div> : null}
           </div>
           <p>{this.props.project.long_desc}</p>
           <div className="project-show-details">

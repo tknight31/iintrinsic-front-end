@@ -11,12 +11,20 @@ class ProjectsContainer extends React.Component {
     this.props.fetchProjects()
   }
 
-  filteredProjects() {
-    return this.props.projects.filter(project => project.creator.id !== parseInt(localStorage.getItem("id")) && !project.creator["ghost_mode"] && project.creator.latitude)
+  filteredProjects = () => {
+    return this.props.projects.filter(project => project.creator.id !== parseInt(localStorage.getItem("id")) && !project.creator["ghost_mode"] && project.creator.latitude && !this.currUserRejectedOrAccepted(project))
+  }
+
+  currUserRejectedOrAccepted = (project) => {
+    return project.requests.some(this.isCurrentUserAndRejectedOrAccepted)
+  }
+
+  isCurrentUserAndRejectedOrAccepted = (request, index, array) => {
+    return request.user.id === parseInt(localStorage.getItem("id")) && (request.current_status === "rejected" || request.current_status === "accepted")
   }
 
   render() {
-    console.log(this.filteredProjects());
+    console.log(this.filteredProjects(), "heres the filtered projects");
     return (
       <div>
         <div className="dash-main-head">

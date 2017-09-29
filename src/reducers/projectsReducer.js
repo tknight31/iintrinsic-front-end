@@ -1,4 +1,4 @@
-function projectsReducer(state = {list:[], users:[], userCreatedProjects:[], isLoading:false, displayedProject:{}, displayedGoals:[], projectImage:"https://res.cloudinary.com/tkjvwptc/image/upload/v1506612198/gdl1a9tahf5oja8za0py.jpg"}, action){
+function projectsReducer(state = {list:[], users:[], userCreatedProjects:[], isLoading:false, displayedProject:{}, displayedGoals:[], projectImage:undefined}, action){
 
 
   switch (action.type) {

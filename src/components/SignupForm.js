@@ -1,6 +1,9 @@
 import React from 'react'
 import Auth from '../adapters/auth'
 import { Link } from 'react-router-dom'
+import UploadPhotoDropNew from './UploadPhotoDropNew'
+import SkillItem from './skills/SkillItem'
+
 
 class SignupForm extends React.Component {
 
@@ -10,13 +13,26 @@ class SignupForm extends React.Component {
     email: "",
     password: "",
     role: "engineer",
-    bio: ""
+    bio: "",
+    name: "",
+    user_image: "",
+    skills: []
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
 
-    Auth.signup(this.state)
+    const signUpObj = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
+      password: this.state.password,
+      role: this.state.role,
+      bio: this.state.bio,
+      user_image: this.state.user_image
+    }
+
+    Auth.signup(signUpObj, this.state.skills)
       .then((user) => {
         this.setState({
           first_name: "",
@@ -24,13 +40,22 @@ class SignupForm extends React.Component {
           email: "",
           password: "",
           role: "engineer",
-          bio: ""
+          bio: "",
+          name: "",
+          user_image: "",
+          skills: []
         })
         localStorage.setItem("token", user.jwt)
         localStorage.setItem('id', user.user.id)
         this.props.history.replace("/dashboard/home")
       })
 
+  }
+
+  addImageToState = (fileURL) => {
+    this.setState({
+      user_image : fileURL
+    })
   }
 
   handleInputChange = (event) => {
@@ -40,9 +65,33 @@ class SignupForm extends React.Component {
     })
   }
 
+  handleSkillSubmit = (event) => {
+    event.preventDefault()
+
+    this.setState({
+      skills: [...this.state.skills, {name: this.state.name}],
+      name : ""
+    })
+  }
+
+  removeSkill = (obj) => {
+    const skillsArr = this.state.skills
+    const filteredSkills = this.state.skills.filter(skill => skill != obj)
+
+    this.setState({
+      goals: filteredSkills
+    })
+
+  }
+
 
 
   render() {
+
+    const imgStyle = this.state.user_image ? {backgroundImage: 'url(' + this.state.user_image + ')'} : null
+    const skills = this.state.skills.map((skill, index) => <SkillItem key={index} skill={skill} removeSkill={this.removeSkill}/>)
+
+
     return (
       <div>
         <h1>Sign Up</h1><Link to={`/login`}>Login</Link>
@@ -63,11 +112,27 @@ class SignupForm extends React.Component {
             </select>
           </div>
           <div><label>Tell Us a Little About yourself</label><textarea name="bio" onChange={this.handleInputChange} value={this.state.bio}></textarea></div>
-
-
-          <input type="submit" value="Login"/>
+          <input className="button" type="submit" value="Login"/>
         </form>
+
+        <div className="edit-image-upload">
+          <div className="profile-image-border">
+            <div style={imgStyle} className="large-avatar profile-image"></div>
+          </div>
+          <UploadPhotoDropNew addImageToState={this.addImageToState}/>
+        </div>
+
+        <div className="skill-form-wrapper">
+          <form onSubmit={this.handleSkillSubmit} className="goal-form">
+            <div><label>Add Some Skills</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>
+            <input className="button" type="submit" value="Add"/>
+          </form>
+          <div className="signup-skills-holder">
+            {skills}
+          </div>
+        </div>
       </div>
+
     )
   }
 }

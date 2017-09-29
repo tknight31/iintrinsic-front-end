@@ -24,6 +24,29 @@ export function addProject(project) {
 
 }
 
+export function removeProject(projectId) {
+
+  const jwtToken = localStorage.getItem("token")
+
+
+  return function (dispatch) {
+    dispatch({type:"FETCHING_PROJECTS"})
+    fetch(`http://localhost:3000/api/v1/projects/${projectId}`,{
+          method: 'DELETE',
+          headers: {
+            "Authorization":`Bearer ${jwtToken}`,
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          }
+    })
+      .then((res) => res.json())
+      .then(projects => {
+        dispatch({type:"FETCHED_USER_CREATED_PROJECTS", payload: projects})
+      })
+  }
+
+}
+
 export function makeRequest(project) {
 
   const jwtToken = localStorage.getItem("token")
@@ -153,15 +176,6 @@ export function getProjectUsers(id) {
   }
 }
 
-
-export function removeProject(title) {
-  const jwtToken = localStorage.getItem("token")
-
-  return {
-    type:"REMOVE_PROJECT",
-    payload: title
-  }
-}
 
 export function fetchUserCreatedProjects(id) {
   const jwtToken = localStorage.getItem("token")

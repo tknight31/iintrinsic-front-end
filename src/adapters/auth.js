@@ -12,8 +12,8 @@ class Auth {
       .then(res => res.json())
   }
 
-  static signup(userParams) {
-    const userObject = {user: userParams}
+  static signup(signUpObj, skillsArr) {
+    const userObject = {user: signUpObj, skills: skillsArr}
     const userJSON = JSON.stringify(userObject)
     return fetch('http://localhost:3000/api/v1/users',{
       method: 'post',

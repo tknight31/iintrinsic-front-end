@@ -45,11 +45,24 @@ class UserProfile extends React.Component {
     return this.props.currentUser.id === this.props.user.id
   }
 
+  filteredProjects = () => {
+    return this.props.user.projects.filter(project => this.currUserAccepted(project))
+  }
+
+  currUserAccepted = (project) => {
+    return project.requests.some(this.isCurrentUserAccepted)
+  }
+
+  isCurrentUserAccepted = (request, index, array) => {
+    return (request.current_status === "accepted")
+  }
+
+
   render() {
       const imgStyle = this.props.user["user_image"] ? {backgroundImage: 'url(' + this.props.user["user_image"] + ')'} : null
-      const numberOfProjects = this.props.user.projects ? this.props.user.projects.length : null
+      const numberOfProjects = this.props.user.projects ? this.filteredProjects().length : null
 
-      const currUserProjects = this.props.user.projects ? this.props.user.projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
+      const currUserProjects = this.props.user.projects ? this.filteredProjects().map((project, index) => <ProjectPreview key={index} project={project}/>) : null
       const currUserCreatedProjects = this.props.user.created_projects ? this.props.user.created_projects.map((project, index) => <ProjectPreview key={index} project={project}/>) : null
       const currUserSkills = this.props.user.skills ? this.props.user.skills.map((skill, index) => <SkillItem key={index} skill={skill}/>) : null
 
@@ -87,11 +100,9 @@ class UserProfile extends React.Component {
                 transitionName="example"
                 transitionEnterTimeout={300}
                 transitionLeaveTimeout={300}>
-                  <h3>Created</h3>
                   {currUserCreatedProjects}
-                  <h3>Collaborated</h3>
                     {currUserProjects}
-                </CSSTransitionGroup>
+              </CSSTransitionGroup>
             </div>
           </div>
         )

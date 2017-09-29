@@ -1,4 +1,5 @@
 import React from 'react'
+import UploadPhotoDropNew from '../UploadPhotoDropNew'
 import { connect } from 'react-redux'
 import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
@@ -11,6 +12,7 @@ class ProjectsForm extends React.Component {
     "short_desc" : "",
     "long_desc" : "",
     description : "",
+    project_image: "",
     goals: []
   }
 
@@ -22,7 +24,8 @@ class ProjectsForm extends React.Component {
       category: this.state.category,
       short_desc: this.state.short_desc,
       long_desc: this.state.long_desc,
-      goals: this.state.goals
+      goals: this.state.goals,
+      project_image: this.state.project_image
     })
 
     this.setState({
@@ -31,7 +34,7 @@ class ProjectsForm extends React.Component {
       "short_desc": "",
       "long_desc": "",
       description : "",
-      goals: []
+      project_image: ""
     })
       // do some stuff
   }
@@ -44,7 +47,6 @@ class ProjectsForm extends React.Component {
       goals: [...this.state.goals, {description: this.state.description}],
       description : ""
     })
-
   }
 
   handleDelete = (obj) => {
@@ -59,6 +61,11 @@ class ProjectsForm extends React.Component {
     })
 
   }
+  addImageToState = (fileURL) => {
+    this.setState({
+      project_image : fileURL
+    })
+  }
 
 
   handleInputChange = (event) => {
@@ -71,11 +78,21 @@ class ProjectsForm extends React.Component {
 
   render() {
 
+    const imgStyle = this.state.project_image ? {backgroundImage: 'url(' + this.state.project_image + ')'} : null
 
     const goals = this.state.goals.map((goal, index) => <FormGoal key={index} goal={goal} handleDelete={this.handleDelete}/>)
     console.log(this.state.goals);
     return (
       <div className="project-form-wrapper">
+
+
+        <div className="edit-image-upload">
+          <div className="profile-image-border">
+            <div style={imgStyle} className="project-image-preview"></div>
+          </div>
+          <UploadPhotoDropNew addImageToState={this.addImageToState}/>
+        </div>
+
         <form onSubmit={this.handleSubmit} className="project-form">
           <div><label>Project Name</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>
           <div><label>Project Category</label><input type="text" name="category" onChange={this.handleInputChange} value={this.state.category} /></div>
