@@ -39,14 +39,14 @@ class Dashboard extends React.Component {
               <div className="dash-main">
 
                 <div>
-                  <Route path="/dashboard/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
-                  <Route path="/dashboard/projects/new" component={ProjectForm}/>
-                  <Route path="/dashboard/projects/all" component={MyProjects}/>
-                  <Route path="/dashboard/profile/:id" component={UserProfile}/>
-                  <Route path="/dashboard/project/:id" component={ProjectShow}/>
-                  <Route path="/dashboard/requests" component={RequestContainer}/>
-                  <Route path="/dashboard/edit/project/:id" render={(props) => <ProjectEdit currentUser={this.props.currentUser} {...props}/>}/>
-                  <Route path="/dashboard/user/edit" render={(props) => <ProfileEditForm updateUserInfo={this.props.updateUserInfo} currentUser={this.props.currentUser} userImage={this.props.userImage} {...props}/>}/>
+                  <Route exact path="/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
+                  <Route exact path="/projects/new" component={ProjectForm}/>
+                  <Route exact path="/projects/" component={MyProjects}/>
+                  <Route exact path="/user/:id" component={UserProfile}/>
+                  <Route exact path="/project/:id" component={ProjectShow}/>
+                  <Route exact path="/requests" component={RequestContainer}/>
+                  <Route exact path="/project/edit/:id" render={(props) => <ProjectEdit currentUser={this.props.currentUser} {...props}/>}/>
+                  <Route exact path="/users/edit/" render={(props) => <ProfileEditForm updateUserInfo={this.props.updateUserInfo} currentUser={this.props.currentUser} userImage={this.props.userImage} {...props}/>}/>
                 </div>
               </div>
               <DashboardUsers/>

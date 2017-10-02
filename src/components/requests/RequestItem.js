@@ -28,7 +28,7 @@ class RequestItem extends React.Component {
         <div className="request-item">
               <div style={imgStyle} className="small-avatar"></div>
               <div className="project-request-info">
-                <Link to={`/dashboard/profile/${this.props.request.user.id}`}><h3>{this.props.request.user.first_name} {this.props.request.user.last_name}</h3></Link>
+                <Link to={`/user/${this.props.request.user.id}`}><h3>{this.props.request.user.first_name} {this.props.request.user.last_name}</h3></Link>
                 <h4>{this.props.request.user.role}</h4>
               </div>
               <div className="button-holders">

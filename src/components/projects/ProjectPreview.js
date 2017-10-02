@@ -24,7 +24,7 @@ const ProjectPreview = (props) => {
           <div style={imgStyle} className="small-avatar"></div>
         </div>
         <div className="project-info">
-          <Link to={`/dashboard/project/${props.project.id}`}><h2>{props.project.name}</h2></Link>
+          <Link to={`/project/${props.project.id}`}><h2>{props.project.name}</h2></Link>
           <h3>{props.project["category"]}</h3>
         </div>
       </div>

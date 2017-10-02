@@ -3,23 +3,35 @@ import { Route } from 'react-router-dom'
 
 import './App.css';
 import Dashboard from './components/Dashboard'
-import LoginForm from './components/LoginForm'
-import SignupForm from './components/SignupForm'
+import Main from './components/Main'
 
 import authorize from './components/hocs/authorize'
 
 
+// = / -> Splash if theyre not logged in
+
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Route path="/dashboard" component={authorize(Dashboard)}/>
-        <Route path="/login" render={(props) => <LoginForm login={this.loginUser} {...props}/>}/>
-        <Route path="/signup" render={(props) => <SignupForm login={this.loginUser} {...props}/>}/>
-        <div className="bg-filter"></div>
-      </div>
-    );
+
+
+    if (localStorage.getItem("token")) {
+      return (
+        <div className="App">
+          <Route path="/" component={authorize(Dashboard)}/>
+
+          <div className="bg-filter"></div>
+
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <Route path="/" component={Main}/>
+        </div>
+      );
+    }
+
   }
 }
 

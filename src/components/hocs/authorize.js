@@ -6,8 +6,6 @@ function authorize(RenderedComponent, props){
     componentWillMount() {
         if (!localStorage.getItem('token') && this.props.location.pathname !== "login") {
           this.props.history.push("/login")
-        } else {
-
         }
     }
     render() {

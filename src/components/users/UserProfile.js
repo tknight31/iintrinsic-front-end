@@ -94,7 +94,7 @@ class UserProfile extends React.Component {
             </div>
             <SkillsList skills={this.props.skills} removeSkill={this.props.actions.removeSkill} isCurrentUser={this.isCurrentUser()}/>
 
-            <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/dashboard/projects/new`}>Create New</Link></span> : null}</h2>
+            <h2>Projects {this.isCurrentUser() ? <span className="header-link"><Link className="button" to={`/projects/new`}>Create New</Link></span> : null}</h2>
             <div className="profile-projects">
               <CSSTransitionGroup
                 transitionName="example"

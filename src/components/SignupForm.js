@@ -105,7 +105,6 @@ class SignupForm extends React.Component {
     return (
       <div>
 
-
         <h1>Sign Up</h1><Link to={`/login`}>Login</Link>
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>

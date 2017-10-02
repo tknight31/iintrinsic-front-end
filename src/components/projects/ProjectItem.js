@@ -26,7 +26,7 @@ const ProjectItem = (props) => {
         <div style={imgStyle} className="small-avatar"></div>
       </div>
       <div className="project-info">
-        <Link to={`/dashboard/project/${props.project.id}`}><h2>{props.project.name}</h2></Link>
+        <Link to={`/project/${props.project.id}`}><h2>{props.project.name}</h2></Link>
         <p>{props.project["short_desc"]}</p>
       </div>
       <div className="project-members">

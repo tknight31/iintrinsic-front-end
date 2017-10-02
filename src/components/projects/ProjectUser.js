@@ -10,7 +10,7 @@ const ProjectUser = (props) => {
         <div style={imgStyle} className="large-avatar profile-image"></div>
       </div>
       <div className="project-user-info">
-        <Link to={`/dashboard/profile/${props.user.id}`}><h3>{props.user["first_name"]} {props.user["last_name"]}</h3></Link>
+        <Link to={`/user/${props.user.id}`}><h3>{props.user["first_name"]} {props.user["last_name"]}</h3></Link>
         <h4>{props.user.role}</h4>
       </div>
     </div>
