@@ -40,13 +40,13 @@ import DropdownMenu from 'react-dd-menu';
     return (
       <div className="header dash-header">
         <div className="head-menu menu-left">
-          <p>intrinsic</p> <Link className="button" to={`/dashboard/projects/new`}>New Project</Link>
+          <p>intrinsic</p> <Link className="button" to={`/projects/new`}>New Project</Link>
         </div>
         <div className="head-menu menu-right">
             <GhostMode/>
 
           <DropdownMenu {...menuOptions}>
-            <li><Link to={`/dashboard/profile/${this.props.currentUser.id}`}><i className="fa fa-fw fa-user" aria-hidden="true"></i>View Profile</Link></li>
+            <li><Link to={`/user/${this.props.currentUser.id}`}><i className="fa fa-fw fa-user" aria-hidden="true"></i>View Profile</Link></li>
             <li><button type="button" onClick={this.props.logout}><i className="fa fa-fw fa-sign-out" aria-hidden="true"></i> Logout</button></li>
           </DropdownMenu>
           <div style={imgStyle} className="small-avatar"></div>

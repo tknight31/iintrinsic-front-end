@@ -38,11 +38,10 @@ class LoginForm extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <div>
-        <div className="no-auth-bg"></div>
-        <h1>Log In</h1><Link to={`/signup`}>Register</Link>
+      <div className="auth-page">
+        <h1 className="main">Log In</h1>
         <div className="form-container">
-          <div className="form-wrapper">
+          <div className="form-wrapper login">
             <form onSubmit={this.handleSubmit}>
               <div><Input type="email" name="email" label="email" onChange={this.handleInputChange} value={this.state.email}/></div>
               <div><Input type="password" name="password" label="Password" onChange={this.handleInputChange} value={this.state.password} /></div>

@@ -13,7 +13,7 @@ class SignupForm extends React.Component {
     last_name: "",
     email: "",
     password: "",
-    role: "",
+    role: "engineer",
     bio: "",
     name: "",
     user_image: "",
@@ -82,7 +82,7 @@ class SignupForm extends React.Component {
     const filteredSkills = this.state.skills.filter(skill => skill != obj)
 
     this.setState({
-      goals: filteredSkills
+      skills: filteredSkills
     })
 
   }
@@ -103,9 +103,9 @@ class SignupForm extends React.Component {
 
 
     return (
-      <div>
+      <div className="auth-page">
 
-        <h1>Sign Up</h1><Link to={`/login`}>Login</Link>
+        <h1 className="main">Sign Up</h1>
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <div className="form-wrapper">
@@ -120,7 +120,7 @@ class SignupForm extends React.Component {
               <div><Input s={6} type="password" label="Password" name="password" onChange={this.handleInputChange} value={this.state.password}/></div>
             </div>
             <div className="form-group">
-                <Input s={12} type="select" label="Choose Your Role" defaultValue='engineer' name="role" value={this.state.role} onChange={this.handleInputChange}>
+                <Input s={12} type="select" label="Choose Your Role" name="role" value={this.state.role} onChange={this.handleInputChange}>
                   <option value="engineer">Engineer</option>
                   <option value="designer">Designer</option>
                   <option value="visionary">Visionary</option>
@@ -151,7 +151,7 @@ class SignupForm extends React.Component {
           <div className="skill-form-wrapper">
             <form onSubmit={this.handleSkillSubmit} className="goal-form">
               <div><label>Add Some Skills</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>
-              <input className="button" type="submit" value="Add"/>
+                <div><input className="button" type="submit" value="Add"/></div>
             </form>
             <div className="signup-skills-holder">
               <span>Skills:</span>

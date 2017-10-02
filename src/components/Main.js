@@ -5,16 +5,23 @@ import Splash from './Splash'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
-
+window.onload = function () {
+  var v = document.getElementById("bgvid");
+  v.playbackRate = 0.8;
+};
 
 class Main extends Component {
+
+
+
   render() {
     return (
       <div className="main">
+        <div className="no-auth-bg"></div>
 
         <div className="header no-auth-nav">
           <div className="head-menu menu-left">
-            <p>intrinsic</p>
+            <p className="logo-text"><Link to={`/`}>iintrinsic</Link></p>
           </div>
           <div className="head-menu menu-right">
             <Link to={`/login`}>Login</Link>
@@ -28,7 +35,7 @@ class Main extends Component {
           <div className="no-auth-bg"></div>
 
           <video poster="http://space-facts.com/wp-content/uploads/magellanic-clouds.png" id="bgvid" playsInline autoPlay muted loop>
-            <source src="videos/galaxy.mp4" type="video/mp4"/>
+            <source src="videos/starlapse.mp4" type="video/mp4"/>
           </video>
 
       </div>

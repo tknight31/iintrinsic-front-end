@@ -15,6 +15,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 const appReducer = combineReducers({users: usersReducer, projects: projectsReducer, skills: skillsReducer})
 
+
 const rootReducer = (state, action) => {
   if (action.type === 'USER_LOGOUT') {
     state = undefined
