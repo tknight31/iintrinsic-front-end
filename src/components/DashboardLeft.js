@@ -11,8 +11,8 @@ const DashboardLeft = (props) => {
             INTRINSIC
         </div>
         <div className="avatar">
-            <div className="profile-image" style={imgStyle}></div>
-            <h3>{props.currentUser["first_name"]} {props.currentUser["last_name"]}</h3>
+            <Link to={`/dashboard/profile/${props.currentUser.id}`}><div className="profile-image" style={imgStyle}></div></Link>
+            <Link to={`/dashboard/profile/${props.currentUser.id}`}><h3>{props.currentUser["first_name"]} {props.currentUser["last_name"]}</h3></Link>
             <h4>{props.currentUser.role}</h4>
         </div>
         <div className="left-nav">

@@ -65,15 +65,61 @@ h1, h2, h3, h4 {
   font-weight:400;
 }
 
-input, textarea {
-  border-radius: 10rem;
-  padding:5px;
-  box-sizing: border-box;
+
+.form-container {
+    position: relative;
+    width: 650px;
+    max-width: 90%;
+    margin: auto;
 }
 
-input[type="text"], textarea {
-  border:solid #cacaca 1px;
+.form-wrapper {
+    background: white;
+    margin: auto;
+    padding: 40px;
+    box-sizing: border-box;
 }
+
+.form-divided {
+  display:flex;
+  justify-content: space-around;
+}
+
+.form-divided > div {
+  flex-grow:1;
+
+}
+.form-divided > div:first-child {
+  margin-right:1%
+}
+.form-divided > div:last-child {
+  margin-left:1%
+}
+
+.signup-submit {
+  position: absolute;
+  bottom:10px;
+  right:40px;
+}
+.signup-skills-holder > span {
+  display: block;
+  font-size: .8em;
+  margin-bottom: 7px;
+  color: #9e9ea1;
+}
+
+.signup-skills-holder{
+  border:solid 1px lightgray;
+  border-radius: .5rem;
+  min-height: 64px;
+  padding:8px;
+  margin: 12px auto;
+}
+
+form .form-wrapper {
+  padding-bottom: 0;
+}
+
 
 .button {
   border-radius: 10rem;
@@ -127,12 +173,6 @@ flex-flow: row wrap;
 
 }
 
-.dash-header {
-  background: rgba(255, 255, 255, 0.43);
-  flex: 1 100%;
-  color: #cfd7dc;
-}
-
 
 .head-menu {
   display: flex;
@@ -140,6 +180,7 @@ flex-flow: row wrap;
 }
 .menu-left {
 float:left;
+height: 55px;
 }
 
 .menu-right {
@@ -185,8 +226,8 @@ div.dash-main {
 }
 
 .profile-image{
-  height:80px;
-  width:80px;
+  height:130px;
+  width:130px;
   border-radius: 500rem;
   background-image: url("images/default-user.jpg");
   background-size: cover;
@@ -208,6 +249,18 @@ div.dash-main {
 
 .dash-right > * {
   padding:12px;
+}
+
+.header.dash-header {
+  background: rgba(255, 255, 255, 0.43);
+  padding:6px;
+  flex: 1 100%;
+  color: #cfd7dc;
+}
+
+.name-menu {
+  color:#424345;
+  cursor: pointer;
 }
 
 .dash-users {
@@ -236,7 +289,8 @@ div.dash-main {
 
 .logo, .avatar {
   border-bottom: rgba(46, 46, 58, 0.38) solid 1px;
-  padding-bottom: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .avatar {
@@ -249,12 +303,18 @@ div.dash-main {
   margin: 2px 0;
 }
 
+.avatar a{
+  color:white;
+  text-decoration: none;
+}
+
+
 .avatar h3{
   margin-bottom: 2px;
 }
 
 .avatar .profile-image {
-  margin:12px auto;
+  margin: auto;
 }
 
 .left-nav {
@@ -668,24 +728,4 @@ div.dash-main {
 .goal-el span:hover {
   font-size:.7em;
   color:yellow;
-}
-
-/*Transistions*/
-
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
 }
