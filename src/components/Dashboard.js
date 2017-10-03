@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import { onMessage, emitMessage, createChat, joinChat, loadChat, clearChat } from '../api/node/api';
 import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
 import ProjectsContainer from './projects/ProjectsContainer'
 import MyProjects from './projects/MyProjects'
+import Test from './messages/Test'
 import RequestContainer from './requests/RequestContainer'
 import ProjectShow from './projects/ProjectShow'
 import ProjectForm from './projects/ProjectForm'
@@ -41,6 +43,7 @@ class Dashboard extends React.Component {
                 <div>
                   <Route exact path="/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
                   <Route exact path="/projects/new" component={ProjectForm}/>
+                  <Route exact path="/messages/" component={Test}/>
                   <Route exact path="/projects/" component={MyProjects}/>
                   <Route exact path="/user/:id" component={UserProfile}/>
                   <Route exact path="/project/:id" component={ProjectShow}/>

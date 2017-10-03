@@ -7,8 +7,8 @@ const DashboardLeft = (props) => {
 
   return (
     <div className="dash-left">
-        <div className="logo">
-            INTRINSIC
+        <div className="logo logo-text">
+            iintrinsic
         </div>
         <div className="avatar">
             <Link to={`/user/${props.currentUser.id}`}><div className="profile-image" style={imgStyle}></div></Link>

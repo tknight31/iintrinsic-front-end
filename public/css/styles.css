@@ -1538,7 +1538,9 @@ select:disabled {
 .dd-menu .dd-menu-items ul li > *:focus, .dd-menu .dd-menu-items ol li:hover:not([role="separator"]):not(.separator),
 .dd-menu .dd-menu-items ol li > *:focus {
   color: white;
-  background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+  background: #22c1c3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   outline: none;
 }
 /* line 55, ../src/scss/_dd-menu.scss */

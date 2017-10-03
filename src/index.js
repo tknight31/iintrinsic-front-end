@@ -8,12 +8,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import projectsReducer from './reducers/projectsReducer'
 import usersReducer from './reducers/usersReducer'
 import skillsReducer from './reducers/skillsReducer'
+import chatReducer from './reducers/chatReducer'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 
-const appReducer = combineReducers({users: usersReducer, projects: projectsReducer, skills: skillsReducer})
+const appReducer = combineReducers({users: usersReducer, projects: projectsReducer, skills: skillsReducer, chat: chatReducer})
 
 
 const rootReducer = (state, action) => {

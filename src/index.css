@@ -233,7 +233,7 @@ a {
 
 
 .deactive {
-  background:gray;
+  background:#5d5d5d;
 }
 
 .button:hover {
@@ -242,7 +242,7 @@ a {
 }
 
 .deactive:hover {
-  background:gray;
+  background:#5d5d5d;
 }
 
 .splash {
@@ -354,7 +354,7 @@ flex-flow: row wrap;
 }
 .menu-left {
 float:left;
-height: 55px;
+height: 45px;
 }
 
 .menu-right {
@@ -383,8 +383,8 @@ div.dash-main {
   text-align: left;
   flex: 1 0;
   position: relative;
-  padding:30px;
-  min-height: 90vh;
+  padding:0;
+  min-height: calc(100vh - 60px);
 }
 .map-holder {
   position: relative;
@@ -393,7 +393,7 @@ div.dash-main {
 }
 
 .dash-left {
-  background: rgba(28, 52, 58, 0.8);
+  background: rgba(46, 54, 56, 0.86);
   flex: 0 0;
   min-width: 294px;
   color:#fff
@@ -418,7 +418,7 @@ div.dash-main {
   display: flex;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  color:#4c5f99
+  color:#6f6f6f
 }
 
 .dash-right > * {
@@ -426,8 +426,8 @@ div.dash-main {
 }
 
 .header.dash-header {
-  background: rgba(255, 255, 255, 0.43);
-  padding:6px;
+  background: rgba(255, 255, 255, 0.77);
+  padding:5px;
   flex: 1 100%;
   color: #cfd7dc;
 }
@@ -439,7 +439,9 @@ div.dash-main {
 
 .dash-users {
   border-left:solid white 3px;
+  border-top: 1px solid #e0e0e0;
   min-width: 270px;
+  background: rgba(255, 255, 255, 0.77);
 }
 
 .dash-users a {
@@ -454,15 +456,17 @@ div.dash-main {
 
 .dash-main-head {
   border-bottom: #ababab solid 1px;
-  margin-bottom:25px;
+  margin-top:25px;
+  padding: 0 12px;
 }
 
 .dash-main-head h2 {
-  margin-top:0
+  margin-top:0;
+  color:#afafaf;
 }
 
 .logo, .avatar {
-  border-bottom: rgba(46, 46, 58, 0.38) solid 1px;
+  border-bottom: rgba(27, 27, 29, 0.69) solid 1px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -472,7 +476,7 @@ div.dash-main {
 }
 
 .avatar h4{
-  color:#59768e;
+  color:#737373;
   font-size: .9em;
   margin: 2px 0;
 }
@@ -492,13 +496,13 @@ div.dash-main {
 }
 
 .left-nav {
-  border-bottom: rgba(46, 46, 58, 0.38) solid 1px;
+  border-bottom: rgba(27, 27, 29, 0.69) solid 1px;
   text-align: left;
   padding-bottom: 20px;
 }
 
 .left-nav a {
-  color: #b7cdd8;
+  color: #ebece5;
   box-sizing: border-box;
   padding:12px 10px 12px 30px;
   display: block;
@@ -519,7 +523,10 @@ div.dash-main {
 }
 
 .left-nav a .link-bg {
-  background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);
+  /*background: linear-gradient(45deg, #c3d84d 0%,#4bd483 73%,#39d6d1 100%);*/
+  background: #22c1c3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   opacity: 0;
   position: absolute;
   width:100%;
@@ -539,7 +546,7 @@ div.dash-main {
 .left-nav > p {
   font-size: .9em;
   margin-left:30px;
-  color:#59768e;
+  color:#737373;
   margin-top: 30px;
 }
 
@@ -547,6 +554,17 @@ div.dash-main {
   margin-top: 30px;
   height:500px;
   overflow-y: scroll;
+  padding:20px;
+  background: #22242b;
+  background: -webkit-linear-gradient(to right, #859398, #22242b);
+  background: linear-gradient(to right, #859398, #22242b);
+}
+
+.my-projects .project-container {
+  margin-top: 0;
+  height:900px;
+  overflow-y: scroll;
+
 }
 
 
@@ -561,17 +579,19 @@ div.dash-main {
 }
 
 .project-item {
-  background: #e5e5e8;
+  background: rgba(255, 255, 255, 0.32);
+  color:white;
   box-sizing: border-box;
-  padding:4px;
+  padding:15px;
+  line-height: 1.7em;
   border-radius: .5rem;
-  margin-bottom:12px;
-  background: linear-gradient(55deg, rgb(234, 243, 191) 0%, rgb(255, 255, 255) 23%, rgb(255, 255, 255) 100%);
+  margin-bottom:25px;
   box-shadow: 0px 16px 25px 0px rgba(118, 88, 198, 0.1);
+
 }
 
 .project-item a {
-  color: #b3b3b3;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -601,12 +621,16 @@ div.dash-main {
 }
 
 .project-info h2 {
-  margin: 0
+    margin: 0;
+    font-family: 'Encode Sans Expanded', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
 }
 
 .project-item:nth-child(odd) {
-  background: #FFF;
-  background: linear-gradient(55deg, rgb(224, 230, 239) 0%, rgb(255, 255, 255) 23%, rgb(255, 255, 255) 100%);
+  background: rgba(255, 255, 255, 0.32);
+  /*background: linear-gradient(55deg, rgb(224, 230, 239) 0%, rgb(255, 255, 255) 23%, rgb(255, 255, 255) 100%);*/
 }
 
 .user-item {
@@ -615,7 +639,7 @@ div.dash-main {
   padding:3px;
   padding-left:8px;
   background: white;
-  box-shadow: 0px 16px 25px 0px rgba(118, 88, 198, 0.1);
+  box-shadow: rgba(95, 95, 95, 0.1) 0px 16px 25px 0px;
 }
 
 .user-info {
@@ -640,6 +664,11 @@ div.dash-main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.menu-right .small-avatar {
+  height:35px;
+  width:35px;
 }
 .user-profile-container {
   padding:12px;

@@ -23,13 +23,15 @@ class ProjectShow extends React.Component {
 
   render() {
     console.log(this.props, "project details");
+    const imgStyle = this.props.project.project_image ? {backgroundImage: 'url(' + this.props.project.project_image + ')'} : null
+
 
     const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal}/>)
 
     if (!this.props.isLoadingProjects && this.props.project.creator) {
       return (
         <div className="project-show-container">
-          <div className="dash-main-head">
+          <div className="project-main-head">
             <h2>{this.props.project.name}</h2>
             {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/project/edit/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/dashboard/projects/all`}>Delete</Link></div> : null}
           </div>

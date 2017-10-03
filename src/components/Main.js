@@ -7,7 +7,9 @@ import SignupForm from './SignupForm'
 
 window.onload = function () {
   var v = document.getElementById("bgvid");
-  v.playbackRate = 0.8;
+  if (v) {
+    v.playbackRate = 0.8;
+  }
 };
 
 class Main extends Component {
