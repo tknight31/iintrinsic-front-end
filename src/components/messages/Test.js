@@ -12,6 +12,8 @@ class SocketTest extends React.Component {
 
     loadChat((message) => {
       let sender = ''
+      //console.log("peep", message, message.user)
+      console.log("does", this.props.user.first_name, "equal", message.user);
       if(message.user !== this.props.user.first_name){
         sender = 'from-them'
       } else {

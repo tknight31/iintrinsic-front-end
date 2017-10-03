@@ -1,3 +1,80 @@
+/*
+  The following SCSS that I'm using for the chat bubbles was made by Samuel Kraft
+  You can find the SCSS here: https://codepen.io/samuelkraft/pen/Farhl
+*/
+section {
+  overflow-x: hidden;
+  font-family: "Helvetica Neue";
+  font-size: 13px;
+  font-weight: normal;
+  max-width: 290px;
+  margin: 5px auto; }
+  section div {
+    max-width: 260px;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+    line-height: 6px; }
+
+.clear {
+  clear: both; }
+
+.from-me {
+  position: relative;
+  padding: 4px 8px;
+  color: white;
+  background: #2185D0;
+  border-radius: 10px;
+  float: right; }
+  .from-me:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -2px;
+    right: -7px;
+    height: 20px;
+    border-bottom-left-radius: 16px 14px;
+    -webkit-transform: translate(0, -2px); }
+  .from-me:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -2px;
+    right: -56px;
+    width: 26px;
+    height: 20px;
+    background: #EDEEEF;
+    border-bottom-left-radius: 10px;
+    -webkit-transform: translate(-30px, -2px); }
+
+.from-them {
+  position: relative;
+  padding: 4px 8px;
+  background: #D5D5DA;
+  border-radius: 10px;
+  color: black;
+  float: left; }
+  .from-them:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    bottom: -2px;
+    left: -7px;
+    height: 20px;
+    border-bottom-right-radius: 16px 14px;
+    -webkit-transform: translate(0, -2px); }
+  .from-them:after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: -2px;
+    left: 4px;
+    width: 26px;
+    height: 20px;
+    background: #EDEEEF;
+    border-bottom-right-radius: 10px;
+    -webkit-transform: translate(-30px, -2px); }
+
+
 /* Forms
    ========================================================================== */
 /**
