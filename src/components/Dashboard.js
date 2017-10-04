@@ -14,6 +14,13 @@ import ProfileEditForm from './users/ProfileEditForm'
 import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'
+import TransitionGroup from "react-transition-group/TransitionGroup";
+
+
+const firstChild = props => {
+  const childrenArray = React.Children.toArray(props.children);
+  return childrenArray[0] || null;
+};
 
 
 class Dashboard extends React.Component {
@@ -30,7 +37,7 @@ class Dashboard extends React.Component {
 
   render() {
 
-    if (!this.props.isLoading && this.props.currentUser) {
+    if (!this.props.isLoading && this.props.currentUser && this.props.currentUser.created_projects) {
       return (
           <div className="dash-wrapper">
             <DashboardLeft currentUser={this.props.currentUser} userImage={this.props.userImage}/>

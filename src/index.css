@@ -21,6 +21,10 @@ body {
   background:linear-gradient(135deg, rgb(215, 230, 255) 0%, #edefdc 50%, #eaefdc 55%, rgb(217, 227, 255) 100%);
 }
 
+p {
+  line-height: 1.5em;
+}
+
 body:before {
     content: "";
     right: 0;
@@ -333,6 +337,10 @@ a .link-bg {
 a:hover .link-bg {
   opacity: 1;
 }
+
+
+
+
 /*#ffc400*/
 
 .dash-wrapper {
@@ -542,6 +550,20 @@ div.dash-main {
   opacity: 1;
 }
 
+.left-nav a strong {
+  padding: 2px 9px;
+  margin-left: 12px;
+  background: #e7ece0;
+  display: inline-block;
+  color: gray;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.left-nav a:hover strong {
+  color: #4dc0ad;
+}
+
 
 .left-nav > p {
   font-size: .9em;
@@ -554,16 +576,11 @@ div.dash-main {
   margin-top: 30px;
   height:500px;
   overflow-y: scroll;
-  padding:20px;
-  background: #22242b;
-  background: -webkit-linear-gradient(to right, #859398, #22242b);
-  background: linear-gradient(to right, #859398, #22242b);
+  padding:30px;
 }
 
 .my-projects .project-container {
   margin-top: 0;
-  height:900px;
-  overflow-y: scroll;
 
 }
 
@@ -579,8 +596,8 @@ div.dash-main {
 }
 
 .project-item {
-  background: rgba(255, 255, 255, 0.32);
-  color:white;
+  background: rgba(255, 255, 255, 0.75);
+  color:#b4bec5;
   box-sizing: border-box;
   padding:15px;
   line-height: 1.7em;
@@ -591,7 +608,7 @@ div.dash-main {
 }
 
 .project-item a {
-  color: #fff;
+  color: #92989b;
   text-decoration: none;
 }
 
@@ -607,6 +624,10 @@ div.dash-main {
   text-align: center;
 }
 
+.project-members p {
+  color:#92989b;
+}
+
 .project-button {
   width:150px;
   text-align: center;
@@ -618,6 +639,7 @@ div.dash-main {
 
 .project-info {
   flex: 1 0;
+  padding-left: 12px;
 }
 
 .project-info h2 {
@@ -626,6 +648,19 @@ div.dash-main {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 1.2em;
+}
+
+.project-info a  {
+    color:#92989c;
+    text-decoration: none;
+}
+
+.project-info a:hover  {
+    color:#ffc107;
+}
+
+.project-info h3 {
+  color:#cfd6db;
 }
 
 .project-item:nth-child(odd) {
@@ -639,7 +674,7 @@ div.dash-main {
   padding:3px;
   padding-left:8px;
   background: white;
-  box-shadow: rgba(95, 95, 95, 0.1) 0px 16px 25px 0px;
+  box-shadow: rgba(95, 95, 95, 0.13) -3px 10px 10px 0px;
 }
 
 .user-info {
@@ -649,10 +684,12 @@ div.dash-main {
 
 .user-info h4 {
   margin:.2em auto;
+  color:#cfd6db;
 }
 
 .user-info h3 {
   margin:.3em auto;
+  color:#92989c
 }
 
 .small-avatar {
@@ -671,7 +708,7 @@ div.dash-main {
   width:35px;
 }
 .user-profile-container {
-  padding:12px;
+  padding:20px;
 }
 
 .user-profile-info {
@@ -718,6 +755,7 @@ div.dash-main {
 .project-preview-bottom {
   padding:12px;
   display:flex;
+  align-items: center;
 }
 
 .project-preview-top {
@@ -732,16 +770,22 @@ div.dash-main {
 
 .profile-mid {
   padding:0 12px;
-  border-right:solid gray 1px;
+  border-right:solid #cfd6db 1px;
   flex: 1 0;
+}
+
+.profile-mid {
+  color: #92989c;
 }
 
 .profile-mid h2 {
   margin: 5px auto;
+  color: #92989c;
 }
+
 .profile-mid h4 {
   margin: 5px auto;
-  color:gray;
+  color:#cfd6db;
 }
 
 .profile-right {
@@ -801,10 +845,12 @@ div.dash-main {
 
 .skills-form {
   margin-left: 15px;
+  min-width: 500px;
 }
 
 .skills-form input[type="text"]  {
   margin-right: 8px;
+  width:50%;
 }
 
 .skills-head {
@@ -843,10 +889,38 @@ div.dash-main {
   width:150px;
 
 }
+.project-main-head {
+  display: flex;
+  padding:25px;
+}
+.project-creator {
+  margin-right:5%;
+}
+
+.project-head {
+  flex: 1 0;
+}
+
+.project-show-container h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.project-head h2 {
+  flex: 1 0;
+  font-size:2.8em;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.project-head p {
+    line-height: 1.8em;
+}
+
 
 .project-show-details {
-  background:white;
   display:flex;
+  padding:0 20px;
 }
 
 .project-show-details > * {
@@ -856,7 +930,93 @@ div.dash-main {
 }
 
 .project-show-goals {
-  border-right:solid #e0e0e0 1px;
+}
+.project-show-goals div{
+  margin-bottom: 15px;
+  display:flex;
+}
+
+.checkboxFive {
+	width: 25px;
+	margin: 20px 100px;
+	position: relative;
+}
+
+.checkboxFive label {
+	cursor: pointer;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: 0;
+  	left: 0;
+	background: #eee;
+	border:1px solid #ddd;
+}
+
+/**
+ * Display the tick inside the checkbox
+ */
+.checkboxFive label:after {
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 6px;
+	left: 7px;
+	border: 3px solid #333;
+	border-top: none;
+	border-right: none;
+
+	transform: rotate(-45deg);
+}
+
+/**
+ * Create the hover event of the tick
+ */
+.checkboxFive label:hover::after {
+	opacity: 0.5;
+}
+
+/**
+ * Create the checkbox state for the tick
+ */
+.checkboxFive input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+.project-show-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+  padding:15px;
+}
+
+.project-show-container > p {
+  padding:0 20px;
+  padding-bottom:20px;
+  border-bottom: lightgray;
+  line-height: 1.8em;
+}
+
+.project-show-image {
+  position: relative;
+  height:300px;
+}
+
+.project-show-image div {
+  background-image: url("images/default-project.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.project-show-users {
+  padding:0 20px;
 }
 
 .project-user-item .profile-image-border{
@@ -889,6 +1049,7 @@ div.dash-main {
 
 .edit-wrapper {
   display: flex;
+  padding: 30px;
 }
 
 .edit-wrapper > * {
@@ -931,4 +1092,24 @@ div.dash-main {
 .goal-el span:hover {
   font-size:.7em;
   color:yellow;
+}
+
+/*transitions */
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

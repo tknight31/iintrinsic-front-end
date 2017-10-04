@@ -5,6 +5,18 @@ const DashboardLeft = (props) => {
 
     const imgStyle = props.userImage ? {backgroundImage: 'url(' + props.userImage + ')'} : null
 
+    const pendingRequests = (project) => {
+      return project.requests.some(isPending)
+    }
+
+    const isPending = (request, index, array) => {
+      return request.current_status === "pending"
+    }
+
+    const allPendingRequests = props.currentUser.created_projects.filter(project => pendingRequests(project))
+
+
+
   return (
     <div className="dash-left">
         <div className="logo logo-text">
@@ -30,9 +42,8 @@ const DashboardLeft = (props) => {
             <p>Navigate</p>
             <div className="left-nav-links">
               <Link to={`/projects/new`}><div className="link-bg"></div><i className="fa fa-fw fa-plus-square" aria-hidden="true"></i><span>Create New</span></Link>
-              <Link to={`/requests`}><div className="link-bg"></div><i className="fa fa-fw fa-user-plus" aria-hidden="true"></i><span>Project Requests</span></Link>
+              <Link to={`/requests`}><div className="link-bg"></div><i className="fa fa-fw fa-user-plus" aria-hidden="true"></i><span>Project Requests</span> <strong>{allPendingRequests.length}</strong></Link>
               <Link to={`/task`}><div className="link-bg"></div><i className="fa fa-fw fa-tasks" aria-hidden="true"></i><span>Add Task</span></Link>
-
             </div>
         </div>
     </div>

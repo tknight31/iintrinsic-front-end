@@ -25,29 +25,42 @@ class ProjectShow extends React.Component {
     console.log(this.props, "project details");
     const imgStyle = this.props.project.project_image ? {backgroundImage: 'url(' + this.props.project.project_image + ')'} : null
 
-
     const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal}/>)
 
     if (!this.props.isLoadingProjects && this.props.project.creator) {
+      const imgStyleCreator = this.props.project.creator.user_image ? {backgroundImage: 'url(' + this.props.project.creator.user_image + ')'} : null
+
       return (
         <div className="project-show-container">
           <div className="project-main-head">
-            <h2>{this.props.project.name}</h2>
-            {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/project/edit/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/dashboard/projects/all`}>Delete</Link></div> : null}
+            <div className="project-creator">
+              <div style={imgStyleCreator} className="small-avatar"></div>
+              <p>
+                By {this.props.project.creator.first_name} {this.props.project.creator.last_name}<br/>
+              <span>First Created</span>
+                {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/project/edit/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/dashboard/projects/all`}>Delete</Link></div> : null}
+              </p>
+            </div>
+            <div className="project-head">
+              <h2>{this.props.project.name}</h2>
+              <p>{this.props.project.short_desc}</p>
+            </div>
           </div>
-          <p>{this.props.project.long_desc}</p>
+
           <div className="project-show-details">
+
+            <div className="project-show-image">
+                <div style={imgStyle}></div>
+            </div>
+
             <div className="project-show-goals">
               <h2>Project Goals</h2>
                 {projectGoals}
             </div>
-            <div className="project-show-progress">
-              <h2>Progress</h2>
-              <div className="user-progress">User</div>
-              <div className="user-progress">User</div>
-              <div className="user-progress">User</div>
-            </div>
+
           </div>
+
+          <p>{this.props.project.long_desc}</p>
           <div className="project-show-users">
               <h2>Group Members</h2>
               <ProjectUserList users={this.props.projectUsers} creator={this.props.project.creator}/>

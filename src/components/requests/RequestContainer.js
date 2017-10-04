@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import ProjectRequest from '../projects/ProjectRequest'
 import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class RequestContainer extends React.Component {
@@ -29,7 +30,14 @@ class RequestContainer extends React.Component {
       console.log(this.props.userCreatedProjects, "heres the created projects");
       const userProjects = this.filteredProjects().map((project, index) => <ProjectRequest key={index} project={project} updateRequest={this.updateRequest}/>)
         return (
-          <div>{userProjects}</div>
+          <div>
+            <ReactCSSTransitionGroup
+              transitionName="fade"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}>
+              {userProjects}
+             </ReactCSSTransitionGroup>
+          </div>
         )
     } else {
       return (<div><p>Loading</p></div>)

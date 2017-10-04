@@ -8,6 +8,10 @@ const GoalItem = (props) => {
 
   return (
     <div className="goal-item">
+      <div class="checkboxFive">
+        <input type="checkbox" value ="1" id="checkboxFiveInput" name=""/>
+        <label for="checkboxFiveInput"></label>
+      </div>
         {props.goal.description}
     </div>
   )

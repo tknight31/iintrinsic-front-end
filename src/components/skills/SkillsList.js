@@ -1,5 +1,6 @@
 import React from 'react'
 import SkillItem from './SkillItem'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class SkillsList extends React.Component {
@@ -9,7 +10,12 @@ class SkillsList extends React.Component {
 
       return (
         <div className="skills-list">
+          <ReactCSSTransitionGroup
+            transitionName="fade"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={200}>
             {SkillItems}
+           </ReactCSSTransitionGroup>
         </div>
       )
     }
