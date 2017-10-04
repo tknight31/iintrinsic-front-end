@@ -48,12 +48,26 @@ class Dashboard extends React.Component {
                 <div>
                   <Route exact path="/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
                   <Route exact path="/projects/new" component={ProjectForm}/>
-                  <Route exact path="/projects/" component={MyProjects}/>
-                  <Route exact path="/user/:id" component={UserProfile}/>
+                  <Route
+                    exact
+                    path="/projects/"
+                    children={({ match, ...rest }) => (
+                    <TransitionGroup component={firstChild}>
+                      {match && <MyProjects {...rest} />}
+                    </TransitionGroup>
+                  )}/>
+                  <Route
+                    exact
+                    path="/user/:id"
+                    children={({ match, ...rest }) => (
+                    <TransitionGroup component={firstChild}>
+                      {match && <UserProfile {...rest} />}
+                    </TransitionGroup>
+                  )}/>
                   <Route exact path="/project/:id" component={ProjectShow}/>
                   <Route exact path="/requests" component={RequestContainer}/>
                   <Route exact path="/project/edit/:id" render={(props) => <ProjectEdit currentUser={this.props.currentUser} {...props}/>}/>
-                  <Route exact path="/users/edit/" render={(props) => <ProfileEditForm updateUserInfo={this.props.updateUserInfo} currentUser={this.props.currentUser} userImage={this.props.userImage} {...props}/>}/>
+                <Route exact path="/users/edit/" render={(props) => <ProfileEditForm updateUserInfo={this.props.updateUserInfo} currentUser={this.props.currentUser} userImage={this.props.userImage} {...props}/>}/>
                 </div>
               </div>
               <DashboardUsers/>

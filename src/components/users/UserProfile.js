@@ -9,6 +9,8 @@ import SkillsList from '../skills/SkillsList'
 import SkillItem from '../skills/SkillItem'
 import { TweenMax } from 'gsap'
 import { CSSTransitionGroup } from 'react-transition-group'
+import AnimatedWrapper from "../hocs/AnimatedWrapper";
+
 
 
 class UserProfile extends React.Component {
@@ -35,8 +37,8 @@ class UserProfile extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.props.actions.getUserData(this.props.match.params.id)
-    this.props.actions.fetchSkills(this.props.match.params.id)
+    this.props.actions.getUserData(parseInt(this.props.history.location.pathname.split("/user/")[1]))
+    this.props.actions.fetchSkills(parseInt(this.props.history.location.pathname.split("/user/")[1]))
     const els = document.querySelectorAll('.project-item')
     TweenMax.staggerFromTo(els, 1, {opacity: 0, y: -20}, {opacity: 1, y:0}, .2)
   }
@@ -107,7 +109,7 @@ class UserProfile extends React.Component {
           </div>
         )
     } else {
-      return (<div><p>Loading</p></div>)
+      return (<div><p className="loading">Loading</p></div>)
     }
   }
 
@@ -130,4 +132,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(AnimatedWrapper(UserProfile))
