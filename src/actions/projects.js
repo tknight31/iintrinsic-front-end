@@ -7,7 +7,7 @@ export function addProject(project) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch('http://localhost:3000/api/v1/projects',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/projects',{
           method: 'POST',
           body: projectJSON,
           headers: {
@@ -31,7 +31,7 @@ export function removeProject(projectId) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch(`http://localhost:3000/api/v1/projects/${projectId}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/${projectId}`,{
           method: 'DELETE',
           headers: {
             "Authorization":`Bearer ${jwtToken}`,
@@ -54,7 +54,7 @@ export function makeRequest(project) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch('http://localhost:3000/api/v1/requests',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/requests',{
           method: 'POST',
           body: projectJSON,
           headers: {
@@ -77,7 +77,7 @@ export function addNewGoal(goal) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch('http://localhost:3000/api/v1/goals',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/goals',{
           method: 'POST',
           body: goalJSON,
           headers: {
@@ -99,7 +99,7 @@ export function removeGoal(goal) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch(`http://localhost:3000/api/v1/goals/${goal.id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/goals/${goal.id}`,{
           method: 'DELETE',
           headers: {
             "Authorization":`Bearer ${jwtToken}`,
@@ -121,7 +121,7 @@ export function updateRequest(request, newStatus) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch(`http://localhost:3000/api/v1/requests/${request.id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/requests/${request.id}`,{
           method: 'POST',
           body: newStatusJSON,
           headers: {
@@ -143,7 +143,7 @@ export function getProjectData(id) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECT"})
-    fetch(`http://localhost:3000/api/v1/projects/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -162,7 +162,7 @@ export function getProjectUsers(id) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECT"})
-    fetch(`http://localhost:3000/api/v1/projects/${id}/users`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/${id}/users`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -183,7 +183,7 @@ export function fetchUserCreatedProjects(id) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch(`http://localhost:3000/api/v1/projects/created/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/created/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -206,7 +206,7 @@ export function updateProjectImage(imgUrl, ProjectId) {
   })
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECT"})
-    fetch(`http://localhost:3000/api/v1/projects/${ProjectId}/image`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/${ProjectId}/image`,{
       method: 'POST',
       body: imgJSON,
       headers: {
@@ -229,7 +229,7 @@ export function updateProjectInfo(project) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch(`http://localhost:3000/api/v1/projects/${project.id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/projects/${project.id}`,{
           method: 'POST',
           body: projectJSON,
           headers: {
@@ -252,7 +252,7 @@ export function fetchProjects() {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_PROJECTS"})
-    fetch('http://localhost:3000/api/v1/projects',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/projects',{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",

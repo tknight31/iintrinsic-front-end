@@ -3,7 +3,7 @@ export function fetchUsers() {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USERS"})
-    fetch('http://localhost:3000/api/v1/users',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/users',{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -23,7 +23,7 @@ export function getUserData(id) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -43,7 +43,7 @@ export function setCurrentUser() {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -63,7 +63,7 @@ export function resetUsers() {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
@@ -87,7 +87,7 @@ export function setCurrentUserLocation(lat, long) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}/location`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}/location`,{
       method: 'POST',
       body: latLongJSON,
       headers: {
@@ -108,7 +108,7 @@ export function switchGhostMode(ghostMode) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}/ghost`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}/ghost`,{
       method: 'POST',
       body: ghostJSON,
       headers: {
@@ -132,7 +132,7 @@ export function updateUserImage(imgUrl) {
   })
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}/image`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}/image`,{
       method: 'POST',
       body: imgJSON,
       headers: {
@@ -154,7 +154,7 @@ export function updateUserInfo(userData) {
   const userJSON = JSON.stringify(userData)
   return function (dispatch) {
     dispatch({type:"FETCHING_USER"})
-    fetch(`http://localhost:3000/api/v1/users/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/users/${id}`,{
       method: 'POST',
       body: userJSON,
       headers: {

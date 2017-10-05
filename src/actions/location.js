@@ -3,7 +3,7 @@ export function fetchUsers() {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_USERS"})
-    fetch('http://localhost:3000/api/v1/users',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/users',{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",

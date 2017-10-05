@@ -8,7 +8,7 @@ export function addSkill(skillName) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_SKILLS"})
-    fetch('http://localhost:3000/api/v1/skills',{
+    fetch('https://iintrinsic-back-end.herokuapp.com/api/v1/skills',{
           method: 'POST',
           body: skillJSON,
           headers: {
@@ -32,7 +32,7 @@ export function removeSkill(skillObj) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_SKILLS"})
-    fetch(`http://localhost:3000/api/v1/skills/${skillObj.id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/skills/${skillObj.id}`,{
           method: 'DELETE',
           headers: {
             "Authorization":`Bearer ${jwtToken}`,
@@ -54,7 +54,7 @@ export function fetchSkills(id) {
 
   return function (dispatch) {
     dispatch({type:"FETCHING_SKILLS"})
-    fetch(`http://localhost:3000/api/v1/skills/${id}`,{
+    fetch(`https://iintrinsic-back-end.herokuapp.com/api/v1/skills/${id}`,{
       headers: {
         "Authorization":`Bearer ${jwtToken}`,
         "Content-Type":"application/json",
