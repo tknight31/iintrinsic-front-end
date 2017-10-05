@@ -155,10 +155,21 @@ video {
 }
 
 .goal-form {
-  display:flex;
   align-items: center;
-
+  margin-bottom:20px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 25px;
+  width: 97%;
+  margin-top: 20px;
+  box-sizing: border-box;
+  border-radius: .5rem;
 }
+
+.goal-form .input-field {
+  width:100%;
+}
+
+
 
 .auth-page h1 {
   margin-top: 70px;
@@ -170,6 +181,7 @@ video {
     font-family: 'Exo', sans-serif;
     color:white;
     font-size:3em;
+    padding-top: 25px;
 }
 
 h1.main {
@@ -234,6 +246,12 @@ a.button {
 
 a {
   transition: all 0.2s ease-in-out;
+  color:#03a9f4;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#078cc7;
 }
 
 
@@ -310,7 +328,7 @@ a {
 .splash-buttons .button:hover {
   background: #ffc400;
   border:#ffc400 3px solid;
-  color:#af8404;
+  color:#000;
 }
 
 .splash-buttons a > * {
@@ -363,7 +381,7 @@ flex-flow: row wrap;
 }
 .menu-left {
 float:left;
-height: 45px;
+height: 55px;
 }
 
 .menu-right {
@@ -1095,6 +1113,22 @@ div.dash-main {
 
 .project-form-wrapper > * {
   flex:1 0;
+}
+
+.project-form {
+    background: rgba(255, 255, 255, 0.76);
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: .5rem;
+}
+
+.project-form textarea.materialize-textarea {
+  margin-bottom:7px;
+  padding-bottom:8px;
+}
+
+.project-form .button {
+  float: right;
 }
 
 .project-image-preview {

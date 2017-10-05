@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
 import FormGoal from '../goals/FormGoal'
+import {Input} from 'react-materialize'
 
 class ProjectsForm extends React.Component {
   state = {
@@ -83,31 +84,41 @@ class ProjectsForm extends React.Component {
     console.log(this.state.goals);
     return (
       <div className="project-form-wrapper">
-
-
-        <div className="edit-image-upload">
-          <div className="profile-image-border">
-            <div style={imgStyle} className="project-image-preview"></div>
+        <div className="top-form">
+          <div className="edit-image-upload">
+            <div className="profile-image-border">
+              <div style={imgStyle} className="project-image-preview"></div>
+            </div>
+            <UploadPhotoDropNew addImageToState={this.addImageToState}/>
           </div>
-          <UploadPhotoDropNew addImageToState={this.addImageToState}/>
+          <div className="goal-form-wrapper">
+            <form onSubmit={this.handleGoalSubmit} className="goal-form">
+
+              <Input type="text" label="Project Goal" name="description" onChange={this.handleInputChange} value={this.state.description} />
+              <input className="button" type="submit" value="Add"/>
+            </form>
+            <div>
+              {goals}
+            </div>
+        </div>
+
         </div>
 
         <form onSubmit={this.handleSubmit} className="project-form">
-          <div><label>Project Name</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>
-          <div><label>Project Category</label><input type="text" name="category" onChange={this.handleInputChange} value={this.state.category} /></div>
-          <div><label>Project Short Desc</label><textarea name="short_desc" onChange={this.handleInputChange} value={this.state["short_desc"]}></textarea></div>
-          <div><label>Project Long Desc</label><textarea name="long_desc" onChange={this.handleInputChange} value={this.state["long_desc"]}></textarea></div>
+          <Input type="text" label="Project Name" name="name" onChange={this.handleInputChange} value={this.state.name} />
+            <Input type="text" label="Project Category" name="category" onChange={this.handleInputChange} value={this.state.category} />
+
+            <textarea id="textarea1" className="materialize-textarea" name="short_desc" onChange={this.handleInputChange} value={this.state.short_desc}></textarea>
+              <label for="textarea1">Short Description</label>
+
+            <textarea id="textarea2" className="materialize-textarea" name="long_desc" onChange={this.handleInputChange} value={this.state.long_desc}></textarea>
+              <label for="textarea2">Project Long Desc</label>
+              
           <input className="button" type="submit" value="Submit"/>
         </form>
-        <div className="goal-form-wrapper">
-          <form onSubmit={this.handleGoalSubmit} className="goal-form">
-            <div><label>Project Goal</label><input type="text" name="description" onChange={this.handleInputChange} value={this.state.description} /></div>
-            <input className="button" type="submit" value="Add"/>
-          </form>
-          <div>
-            {goals}
-          </div>
-        </div>
+
+
+
       </div>
 
     )

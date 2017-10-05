@@ -149,7 +149,7 @@ class SignupForm extends React.Component {
 
           <div className="skill-form-wrapper">
             <form onSubmit={this.handleSkillSubmit} className="goal-form">
-              <div><label>Add Some Skills</label><input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} /></div>
+              <Input type="text" label="Add Some Skills" name="name" value={this.state.name} onChange={this.handleInputChange}/>
                 <div><input className="button" type="submit" value="Add"/></div>
             </form>
             <div className="signup-skills-holder">
