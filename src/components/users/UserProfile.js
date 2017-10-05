@@ -8,6 +8,7 @@ import ProjectPreview from '../projects/ProjectPreview'
 import SkillsList from '../skills/SkillsList'
 import SkillItem from '../skills/SkillItem'
 import { TweenMax } from 'gsap'
+import Loader from '../Loader'
 import { CSSTransitionGroup } from 'react-transition-group'
 
 
@@ -54,7 +55,7 @@ class UserProfile extends React.Component {
   }
 
   isCurrentUserAccepted = (request, index, array) => {
-    return (request.current_status === "accepted")
+    return (request.current_status === "accepted" && request.user_id === this.props.user.id)
   }
 
 
@@ -107,7 +108,7 @@ class UserProfile extends React.Component {
           </div>
         )
     } else {
-      return (<div><p>Loading</p></div>)
+      return (<Loader/>)
     }
   }
 

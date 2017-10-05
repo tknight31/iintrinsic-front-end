@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import DashboardHeader from './DashboardHeader'
 import DashboardLeft from './DashboardLeft'
 import DashboardUsers from './DashboardUsers'
+import Loader from './Loader'
 import ProjectsContainer from './projects/ProjectsContainer'
 import MyProjects from './projects/MyProjects'
 import RequestContainer from './requests/RequestContainer'
@@ -13,6 +14,7 @@ import UserProfile from './users/UserProfile'
 import ProfileEditForm from './users/ProfileEditForm'
 import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
+import * as ProjectActions from '../actions/projects'
 import { bindActionCreators } from 'redux'
 import TransitionGroup from "react-transition-group/TransitionGroup";
 
@@ -48,7 +50,7 @@ class Dashboard extends React.Component {
                 <div>
                   <Route exact path="/home" render={(props) => <ProjectsContainer currentUser={this.props.currentUser} {...props}/>}/>
                   <Route exact path="/projects/new" component={ProjectForm}/>
-                  <Route exact path="/projects/" component={MyProjects}/>
+                  <Route exact path="/projects/" render={(props) => <MyProjects currentUser={this.props.currentUser} {...props}/>}/>
                   <Route exact path="/user/:id" component={UserProfile}/>
                   <Route exact path="/project/:id" component={ProjectShow}/>
                   <Route exact path="/requests" component={RequestContainer}/>
@@ -63,7 +65,7 @@ class Dashboard extends React.Component {
         )
     } else {
       return (
-        <div>Loaddddding....</div>
+        <Loader/>
       )
     }
   }

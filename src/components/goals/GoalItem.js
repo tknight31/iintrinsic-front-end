@@ -1,16 +1,18 @@
 import React from 'react'
+import {Input} from 'react-materialize'
 
 const GoalItem = (props) => {
 
   const handleClick = () => {
-    console.log(props.goal);
+    props.goalUpdate(props.goal)
   }
+
+
 
   return (
     <div className="goal-item">
-      <div class="checkboxFive">
-        <input type="checkbox" value ="1" id="checkboxFiveInput" name=""/>
-        <label for="checkboxFiveInput"></label>
+      <div>
+          <Input onClick={console.log('what')} name={'"goal-' + props.goal.id + '"'} type='checkbox' label=" " defaultChecked='checked'/>
       </div>
         {props.goal.description}
     </div>

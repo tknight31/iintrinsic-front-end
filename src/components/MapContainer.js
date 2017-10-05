@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as UserActions from '../actions/users'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
+import Loader from './Loader'
 
 export class MapContainer extends React.Component {
 
@@ -109,7 +110,7 @@ render() {
       )
     } else {
       return (
-        <div>Loading</div>
+        <Loader/>
       )
     }
 

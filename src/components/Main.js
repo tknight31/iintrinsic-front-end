@@ -36,7 +36,7 @@ class Main extends Component {
         <Route exact path="/signup" render={(props) => <SignupForm login={this.loginUser} {...props}/>}/>
           <div className="no-auth-bg"></div>
 
-          <video poster="http://space-facts.com/wp-content/uploads/magellanic-clouds.png" id="bgvid" playsInline autoPlay muted loop>
+          <video poster="https://wallpapercave.com/wp/xTkHBfj.jpg" id="bgvid" playsInline autoPlay muted loop>
             <source src="videos/starlapse.mp4" type="video/mp4"/>
           </video>
 

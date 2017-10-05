@@ -1,10 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RequestItem from '../requests/RequestItem'
+import { TweenMax } from 'gsap'
+
+
 
 
 class ProjectRequest extends React.Component {
 
+  componentDidMount = () => {
+     const els = document.querySelectorAll('.request-item')
+     TweenMax.staggerFromTo(els, 1, {opacity: 0, y: -20}, {opacity: 1, y:0}, .2)
+  }
 
   filteredRequests = () => {
     return this.props.project.requests.filter(request => request['current_status'] == 'pending')
@@ -16,15 +23,13 @@ class ProjectRequest extends React.Component {
 
   //const imgStyle = props.user["user_image"] ? {backgroundImage: 'url(../../images/' + props.user["user_image"] + ')'} : null
   render() {
-    console.log(this.props.project, "HERES IS THE PROJECT ");
     if(this.props.project.requests){
-      console.log(this.filteredRequests(), "HERES IS THE filteredd reQUESSTS ");
       const requests = this.filteredRequests().map((request, index) => <RequestItem key={index} request={request} updateRequest={this.props.updateRequest}/>)
       return (
         <div className="project-request">
           <h1>{this.props.project.name}</h1>
           <div className="requests">
-              {requests}
+              {this.filteredRequests().length != 0 ? requests : <p>No requests made for this project.</p>}
           </div>
         </div>
       )

@@ -36,7 +36,8 @@ class ProjectsForm extends React.Component {
       description : "",
       project_image: ""
     })
-      // do some stuff
+
+      this.props.history.replace(`/user/${localStorage.getItem("id")}`)
   }
 
   handleGoalSubmit = (event) => {

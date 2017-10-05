@@ -7,16 +7,30 @@ import { bindActionCreators } from 'redux'
 class MyProjects extends React.Component {
   componentDidMount() {
     this.props.fetchUserCreatedProjects(localStorage.getItem("id"))
+
+  }
+
+  filteredProjects = () => {
+    return this.props.currentUser.projects.filter(project => this.currUserAccepted(project))
+  }
+
+  currUserAccepted = (project) => {
+    return project.requests.some(this.isCurrentUserAccepted)
+  }
+
+  isCurrentUserAccepted = (request, index, array) => {
+    return (request.current_status === "accepted" && request.user_id === this.props.currentUser.id)
   }
 
 
   render() {
+      console.log(this.props.currentUser.projects, "user proejects here");
     return (
       <div className="my-projects">
         <div className="dash-main-head">
           <h2>My Projects</h2>
         </div>
-        <ProjectList projects={this.props.projects}/>
+        <ProjectList isUser={true} userProjects={this.filteredProjects()} createdProjects={this.props.projects}/>
       </div>
     )
   }

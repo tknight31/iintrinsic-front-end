@@ -39,11 +39,14 @@ class UploadPhotoDrop extends React.Component {
   }
 
   render(){
+    const dropStyle = {"width": "200px", "height": "200px", "borderWidth": "2px", "textAlign":"center", "borderColor": "rgb(102, 102, 102)", "borderStyle": "dashed", "borderRadius": "5px"}
+
     return(
       <Dropzone
         onDrop={this.handleDrop}
         multiple
         accept="image/*"
+        style={dropStyle}
         >
         <p>Drop your files or click here to upload</p>
       </Dropzone>

@@ -40,7 +40,7 @@ import DropdownMenu from 'react-dd-menu';
     return (
       <div className="header dash-header">
         <div className="head-menu menu-left">
-          <p>intrinsic</p> <Link className="button" to={`/projects/new`}>New Project</Link>
+          <p className="logo-text">intrinsic</p> <Link className="button" to={`/projects/new`}>New Project</Link>
         </div>
         <div className="head-menu menu-right">
             <GhostMode/>

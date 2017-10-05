@@ -54,7 +54,7 @@ class ProjectEdit extends React.Component {
       }
 
       this.props.updateProjectInfo(updatedProject)
-      this.props.history.replace("/dashboard/home")
+      this.props.history.replace(`/project/${this.props.project.id}`)
 
 
     }

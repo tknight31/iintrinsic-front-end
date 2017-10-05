@@ -5,6 +5,7 @@ import * as ProjectActions from '../../actions/projects'
 import { bindActionCreators } from 'redux'
 import ProjectUserList from './ProjectUserList'
 import GoalItem from '../goals/GoalItem'
+import Loader from '../Loader'
 import { Link } from 'react-router-dom'
 
 
@@ -17,18 +18,34 @@ class ProjectShow extends React.Component {
     this.props.actions.getProjectUsers(this.props.match.params.id)
   }
 
+
+  handleRequest = () => {
+    console.log(this.props, "is the project action here?");
+    this.props.actions.makeRequest(this.props.project)
+  }
+
   handleClick = () => {
     this.props.actions.removeProject(this.props.match.params.id)
+  }
+
+  goalUpdate = (obj) => {
+    console.log("gonna update this goal", obj);
+  }
+
+  alreadyInProject = () => {
+    return this.props.project.users.some(function(user) {
+      return user.id === parseInt(localStorage.getItem("id"))
+    })
   }
 
   render() {
     console.log(this.props, "project details");
     const imgStyle = this.props.project.project_image ? {backgroundImage: 'url(' + this.props.project.project_image + ')'} : null
 
-    const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal}/>)
-
+    const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal} goalUpdate={this.goalUpdate} />)
     if (!this.props.isLoadingProjects && this.props.project.creator) {
       const imgStyleCreator = this.props.project.creator.user_image ? {backgroundImage: 'url(' + this.props.project.creator.user_image + ')'} : null
+      const requestButton =  this.alreadyInProject() ? <button className="button deactive">Requested</button> : <button className="button" onClick={this.handleRequest}>Join</button>
 
       return (
         <div className="project-show-container">
@@ -38,7 +55,7 @@ class ProjectShow extends React.Component {
               <p>
                 By {this.props.project.creator.first_name} {this.props.project.creator.last_name}<br/>
               <span>First Created</span>
-                {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/project/edit/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/dashboard/projects/all`}>Delete</Link></div> : null}
+                {this.props.project.creator.id ===this.props.currentUser.id ? <div><Link to={`/project/edit/${this.props.project.id}`}>Edit</Link> <Link onClick={this.handleClick} to={`/user/${this.props.project.creator.id}`}>Delete</Link></div> : <div>{requestButton}</div>}
               </p>
             </div>
             <div className="project-head">
@@ -69,7 +86,7 @@ class ProjectShow extends React.Component {
 
       )
     } else {
-      return (<div><p>Loading</p></div>)
+      return (<Loader/>)
     }
   }
 

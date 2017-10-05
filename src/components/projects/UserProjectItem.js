@@ -7,20 +7,7 @@ import { CSSTransitionGroup } from 'react-transition-group'
 
 
 
-const ProjectItem = (props) => {
-
-  const handleClick = () => {
-    props.makeRequest(props.project)
-  }
-
-  const alreadyInProject = () => {
-    console.log(props.project, "user requests here");
-
-    return props.project.users.some(function(user) {
-      return user.id === parseInt(localStorage.getItem("id"))
-    })
-  }
-
+const UserProjectItem = (props) => {
 
   const imgStyle = props.project.creator["user_image"] ? {backgroundImage: 'url(' + props.project.creator["user_image"] + ')'} : null
   return (
@@ -36,9 +23,6 @@ const ProjectItem = (props) => {
         <p>Members</p>
         <strong>{(props.project.requests.filter(request => request.current_status === "accepted").length) + 1}</strong>
       </div>
-      <div className="project-button">
-        { alreadyInProject() ? <button className="button deactive">Requested</button> : <button className="button" onClick={handleClick}>Join</button>}
-      </div>
 
     </div>
   )
@@ -51,4 +35,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ProjectActions, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(ProjectItem)
+export default connect(null, mapDispatchToProps)(UserProjectItem)
