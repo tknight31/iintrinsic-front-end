@@ -11,7 +11,6 @@ class RequestItem extends React.Component {
   //const imgStyle = props.user["user_image"] ? {backgroundImage: 'url(../../images/' + props.user["user_image"] + ')'} : null
 
   handleAccept = () => {
-    console.log();
     this.props.updateRequest(this.props.request, "accepted")
   }
 
@@ -21,7 +20,6 @@ class RequestItem extends React.Component {
 
 
   render() {
-    console.log(this.props, "where the user at")
     if (this.props.request.user){
       const imgStyle = this.props.request.user["user_image"] ? {backgroundImage: 'url(' + this.props.request.user["user_image"] + ')'} : null
       return (

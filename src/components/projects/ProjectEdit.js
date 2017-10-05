@@ -27,7 +27,6 @@ class ProjectEdit extends React.Component {
 
     handleGoalSubmit = (event) => {
       event.preventDefault()
-      console.log(this.state.description);
 
       this.props.addNewGoal({description: this.state.description, id: this.props.project.id})
 

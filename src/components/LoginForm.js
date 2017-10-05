@@ -36,7 +36,6 @@ class LoginForm extends React.Component {
 
 
   render() {
-    console.log(this.props)
     return (
       <div className="auth-page">
         <h1 className="main">Log In</h1>

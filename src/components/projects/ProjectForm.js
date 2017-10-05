@@ -42,7 +42,6 @@ class ProjectsForm extends React.Component {
 
   handleGoalSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.description);
 
     this.setState({
       goals: [...this.state.goals, {description: this.state.description}],
@@ -51,7 +50,6 @@ class ProjectsForm extends React.Component {
   }
 
   handleDelete = (obj) => {
-    console.log(obj);
 
     const goalsArr = this.state.goals
 

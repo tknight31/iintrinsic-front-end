@@ -13,14 +13,12 @@ import { Link } from 'react-router-dom'
 class ProjectShow extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     this.props.actions.getProjectData(this.props.match.params.id)
     this.props.actions.getProjectUsers(this.props.match.params.id)
   }
 
 
   handleRequest = () => {
-    console.log(this.props, "is the project action here?");
     this.props.actions.makeRequest(this.props.project)
   }
 
@@ -39,7 +37,6 @@ class ProjectShow extends React.Component {
   }
 
   render() {
-    console.log(this.props, "project details");
     const imgStyle = this.props.project.project_image ? {backgroundImage: 'url(' + this.props.project.project_image + ')'} : null
 
     const projectGoals = this.props.goals.map((goal, index) => <GoalItem key={index} goal={goal} goalUpdate={this.goalUpdate} />)

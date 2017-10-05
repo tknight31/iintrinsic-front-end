@@ -208,7 +208,9 @@ h1.main {
   border-radius: .5rem;
   min-height: 71px;
   padding:8px;
+  max-width:384px;
   margin: 12px auto;
+  margin-bottom: 23px;
 }
 
 

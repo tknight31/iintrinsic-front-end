@@ -23,8 +23,6 @@ class UploadPhotoDropNew extends React.Component {
         const data = response.data;
         const fileURL = data.secure_url // You should store this URL for future references in your app
         this.props.addImageToState(fileURL)
-        console.log(data, "this is data");
-        console.log(fileURL, "this is the file url");
       })
     });
 

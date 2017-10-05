@@ -20,7 +20,6 @@ class RequestContainer extends React.Component {
   }
 
   updateRequest = (request, newStatus) => {
-    console.log(this.props, "function should be here");
       this.props.updateRequest(request, newStatus)
   }
 
@@ -28,7 +27,6 @@ class RequestContainer extends React.Component {
   render() {
 
     if (!this.props.isLoading && this.props.userCreatedProjects) {
-      console.log(this.props.userCreatedProjects, "heres the created projects");
       const userProjects = this.filteredProjects().map((project, index) => <ProjectRequest key={index} project={project} updateRequest={this.updateRequest}/>)
 
         return (

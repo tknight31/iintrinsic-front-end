@@ -24,9 +24,6 @@ import DropdownMenu from 'react-dd-menu';
     this.setState({ isMenuOpen: false });
   }
 
-  click = () => {
-    console.log('You clicked an item');
-  }
 
   render(){
     const imgStyle = this.props.currentUser["user_image"] ? {backgroundImage: 'url(' + this.props.currentUser["user_image"] + ')'} : null

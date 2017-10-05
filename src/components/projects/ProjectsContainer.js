@@ -24,7 +24,6 @@ class ProjectsContainer extends React.Component {
   }
 
   render() {
-    console.log(this.filteredProjects(), "heres the filtered projects");
     return (
       <div>
         <div className="dash-main-head">

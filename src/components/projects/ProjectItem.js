@@ -14,7 +14,6 @@ const ProjectItem = (props) => {
   }
 
   const alreadyInProject = () => {
-    console.log(props.project, "user requests here");
 
     return props.project.users.some(function(user) {
       return user.id === parseInt(localStorage.getItem("id"))

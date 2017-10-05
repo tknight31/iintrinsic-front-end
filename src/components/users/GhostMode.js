@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux'
 class GhostMode extends React.Component {
 
   handleToggle = (event) => {
-      console.log(!this.props.ghostMode, "toggle click");
       this.props.switchGhostMode(!this.props.ghostMode)
   }
 

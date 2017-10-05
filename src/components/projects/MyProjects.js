@@ -24,7 +24,6 @@ class MyProjects extends React.Component {
 
 
   render() {
-      console.log(this.props.currentUser.projects, "user proejects here");
     return (
       <div className="my-projects">
         <div className="dash-main-head">

@@ -49,7 +49,7 @@ class SignupForm extends React.Component {
         })
         localStorage.setItem("token", user.jwt)
         localStorage.setItem('id', user.user.id)
-        this.props.history.replace("/dashboard/home")
+        this.props.history.replace("/home")
       })
 
   }
@@ -61,7 +61,6 @@ class SignupForm extends React.Component {
   }
 
   handleInputChange = (event) => {
-    console.log(this.state);
     const currInput = event.target.name
     this.setState({
       [currInput] : event.target.value

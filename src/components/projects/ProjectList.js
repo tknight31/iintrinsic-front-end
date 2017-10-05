@@ -12,7 +12,6 @@ class ProjectsList extends React.Component {
   }
 
   render() {
-    console.log("ups", this.props.userProjects, "cps", this.props.createdProjects);
     const projectItems = !this.props.isUser ? this.props.projects.map((project) => <ProjectItem key={project.id} project={project}/>) : this.props.userProjects.map((project) => <UserProjectItem key={project.id} project={project}/>)
     const createdProjectItems = this.props.isUser ? this.props.createdProjects.map((project) => <UserProjectItem key={project.id} project={project}/>) : null
 

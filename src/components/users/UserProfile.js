@@ -35,7 +35,6 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.props.actions.getUserData(this.props.match.params.id)
     this.props.actions.fetchSkills(this.props.match.params.id)
     const els = document.querySelectorAll('.project-item')
