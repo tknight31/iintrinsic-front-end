@@ -7,7 +7,7 @@ A location-based social network designed to connect people with different skills
 * Authorized user sign up and log in
 * Works in conjunction with [Cloudinary](https://cloudinary.com/) to store user and project photos.  
 * Redux provides persistent state across all app pages
-* On login users location data is saved. Using the [Google Maps API](https://developers.google.com/maps/), users are able to see other users around them
+* On login users' location data is saved. Using the [Google Maps API](https://developers.google.com/maps/), users are able to see other users around them
 * User can turn on 'Ghost Mode', removing them from the main map
 * Users can create/edit projects, update their profile and skills
 * Users can see other users' info, skills, and projects. User can request to join another user's project
